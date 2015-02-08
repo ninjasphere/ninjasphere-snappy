@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd $(dirname $0)
+
+./mqtt-bridgeify agent -serial=$(./sphere-serial)

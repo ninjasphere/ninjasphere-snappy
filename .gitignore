@@ -1,0 +1,6 @@
+build_tmp
+intermediate
+src_cache
+staging-snappy
+*.snap
+sources/*

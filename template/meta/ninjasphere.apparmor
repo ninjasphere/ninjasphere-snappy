@@ -1,0 +1,9 @@
+{
+    "template": "default",
+    "policy_vendor": "ubuntu-snappy",
+    "policy_version": 1.3,
+    "read_path": [
+        "@{PROC}/[0-9]*/stat",
+        "@{PROC}/"
+    ]
+}

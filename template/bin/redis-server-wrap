@@ -1,0 +1,4 @@
+#!/bin/sh
+
+mkdir -p ${SNAPP_APP_DATA_PATH}/redis
+${SNAPP_APP_PATH}/bin/redis-server --dir ${SNAPP_APP_DATA_PATH}/redis --pidfile ${SNAPP_APP_DATA_PATH}/redis-server.pid
