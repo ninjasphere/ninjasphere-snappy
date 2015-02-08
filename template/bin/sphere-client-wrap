@@ -1,0 +1,8 @@
+#!/bin/bash
+
+mkdir -p ${SNAPP_APP_DATA_PATH}/etc/opt/ninja
+
+${SNAPP_APP_PATH}/sphere-client/sphere-client \
+--cloud-production \
+--credentialFile ${SNAPP_APP_DATA_PATH}/etc/opt/ninja/credentials.json \
+--meshFile ${SNAPP_APP_DATA_PATH}/etc/opt/ninja/mesh.json

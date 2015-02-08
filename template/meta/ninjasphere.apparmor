@@ -4,6 +4,12 @@
     "policy_version": 1.3,
     "read_path": [
         "@{PROC}/[0-9]*/stat",
-        "@{PROC}/"
+        "@{PROC}/",
+        "/etc/hosts.allow",
+        "/etc/hosts.deny",
+	"/etc/passwd"
+    ],
+    "policy_groups": [
+        "networking"
     ]
 }

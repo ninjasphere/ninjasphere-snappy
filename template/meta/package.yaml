@@ -6,13 +6,13 @@ icon: meta/nina.svg
 services:
  - name: mosquitto
    description: "Mosquitto MQTT Broker"
-   start: ./bin/mosquitto
+   start: ./bin/mosquitto -c ./etc/mosquitto.conf
  - name: redis-server
    description: "Redis Server"
    start: ./bin/redis-server-wrap
  - name: sphere-client
    description: "Ninja Sphere Client"
-   start: ./sphere-client/sphere-client
+   start: ./bin/sphere-client-wrap
  - name: mqtt-bridgeify
    description: "Ninja Sphere Cloud MQTT Bridge"
    start: ./bin/mqtt-bridgeify-wrap
@@ -20,4 +20,10 @@ ports:
   required: 8000,1883,6379
 integration:
   mqtt-bridgeify:
+    apparmor: meta/ninjasphere.apparmor
+  sphere-client:
+    apparmor: meta/ninjasphere.apparmor
+  mosquitto:
+    apparmor: meta/ninjasphere.apparmor
+  redis-server:
     apparmor: meta/ninjasphere.apparmor
