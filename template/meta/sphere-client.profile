@@ -4,13 +4,13 @@
 
 # Specified profile variables
 @{APP_APPNAME}="sphere-client"
-@{APP_ID_DBUS}="ninjasphere_5fsphere_2dclient_5f0_2e0_2e6"
+@{APP_ID_DBUS}="ninjasphere_5fsphere_2dclient_5f0_2e0_2e7"
 @{APP_PKGNAME_DBUS}="ninjasphere"
 @{APP_PKGNAME}="ninjasphere"
-@{APP_VERSION}="0.0.6"
+@{APP_VERSION}="0.0.7"
 @{CLICK_DIR}="{/apps,/custom/click,/oem,/usr/share/click/preinstalled}"
 
-profile "ninjasphere_sphere-client_0.0.6" {
+profile "ninjasphere_sphere-client_0.0.7" {
   #include <abstractions/base>
   #include <abstractions/consoles>
   #include <abstractions/openssl>
@@ -198,4 +198,5 @@ profile "ninjasphere_sphere-client_0.0.6" {
   /sys/class/net/[a-z0-9]*/address rk,
   /sys/devices/*/*/net/[a-z0-9]*/address rk,
   /proc/cmdline rk,
+  /bin/ip ixr,
 }
