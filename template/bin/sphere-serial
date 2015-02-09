@@ -14,5 +14,5 @@ if [[ -f /sys/bus/i2c/devices/i2c-0/new_device ]]; then # BeagleBone, not a grea
 fi
 
 # fall back on using the default route's interface's MAC address
-echo -n DEVBOX; cat /sys/class/net/$(ip route get "8.8.8.8" | grep -Po '(?<=(dev )).*(?= src)' | tr -d '\n\t ')/address | tr -d ':'
+echo -n DEVBOX; cat /sys/class/net/$(ip route get "8.8.8.8" | grep -Po '(?<=(dev )).*(?= src)' | tr -d '\n\t ')/address | tr -d ':' | tr '[a-z]' '[A-Z]' | tr -d '\n'
 

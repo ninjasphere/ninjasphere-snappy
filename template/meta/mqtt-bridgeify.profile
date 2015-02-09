@@ -4,13 +4,13 @@
 
 # Specified profile variables
 @{APP_APPNAME}="mqtt-bridgeify"
-@{APP_ID_DBUS}="ninjasphere_5fmqtt_2dbridgeify_5f0_2e0_2e7"
+@{APP_ID_DBUS}="ninjasphere_5fmqtt_2dbridgeify_5f0_2e0_2e8"
 @{APP_PKGNAME_DBUS}="ninjasphere"
 @{APP_PKGNAME}="ninjasphere"
-@{APP_VERSION}="0.0.7"
+@{APP_VERSION}="0.0.8"
 @{CLICK_DIR}="{/apps,/custom/click,/oem,/usr/share/click/preinstalled}"
 
-profile "ninjasphere_mqtt-bridgeify_0.0.7" {
+profile "ninjasphere_mqtt-bridgeify_0.0.8" {
   #include <abstractions/base>
   #include <abstractions/consoles>
   #include <abstractions/openssl>
