@@ -1,0 +1,26 @@
+#!/bin/bash
+
+migrate-data() {
+	local datapath="$1"
+	local all_versions="$(dirname ${SNAPP_APP_DATA_PATH})"
+	local current_version="$(basename ${SNAPP_APP_DATA_PATH})"
+	local data_base="/var/lib/apps/ninjasphere"
+
+	if [ -e "${SNAPP_APP_DATA_PATH}/${datapath}" ]; then
+		return 0
+	fi
+
+	echo "Migrating data from any available version..."
+	pushd $data_base
+	for ver in $(ls -r -1v | grep -v ${current_version}); do
+		if [ -e "${ver}/${datapath}" ]; then
+			echo " -> '${ver}'' provides data '${datapath}'"
+			cp -R ${ver}/${datapath} ${current_version}/${datapath}
+			return 0
+		fi
+	done
+	popd
+}
+
+mkdir -p ${SNAPP_APP_DATA_PATH}
+migrate-data $1
