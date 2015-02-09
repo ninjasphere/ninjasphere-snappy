@@ -28,4 +28,4 @@ snap: staging
 	snappy build staging-snappy
 
 remote: snap
-	snappy-remote --url=ssh://10.0.1.14 install ./ninjasphere_0.0.2_multi.snap
+	snappy-remote --url=ssh://10.0.1.14 install ./ninjasphere_0.0.5_multi.snap

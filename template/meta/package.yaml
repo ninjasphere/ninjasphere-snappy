@@ -1,7 +1,7 @@
 name: ninjasphere
 vendor: Theo Julienne <theo@ninjablocks.com>
 architecture: [amd64, armhf]
-version: 0.0.2
+version: 0.0.5
 icon: meta/nina.svg
 services:
  - name: mosquitto
@@ -24,7 +24,7 @@ ports:
   required: 8000,1883,6379
 integration:
   mqtt-bridgeify:
-    apparmor: meta/ninjasphere.apparmor
+    apparmor-profile: meta/mqtt-bridgeify.profile
   sphere-client:
     apparmor-profile: meta/sphere-client.profile
   mosquitto:
