@@ -75,11 +75,15 @@ rm -rf build_tmp
 mkdir -p build_tmp
 
 # mosquitto
-dl-ext http://ports.ubuntu.com/pool/universe/m/mosquitto/mosquitto_0.15-2ubuntu1_armhf.deb
-dl-ext http://mirrors.kernel.org/ubuntu/pool/universe/m/mosquitto/mosquitto_0.15-2ubuntu1_amd64.deb
-siphon-package mosquitto_0.15-2ubuntu1_armhf.deb arm-linux-gnueabihf
-siphon-package mosquitto_0.15-2ubuntu1_amd64.deb x86_64-linux-gnu
+for pn in mosquitto mosquitto-clients libmosquitto0; do
+	dl-ext http://ports.ubuntu.com/pool/universe/m/mosquitto/${pn}_0.15-2ubuntu1_armhf.deb
+	dl-ext http://mirrors.kernel.org/ubuntu/pool/universe/m/mosquitto/${pn}_0.15-2ubuntu1_amd64.deb
+	siphon-package ${pn}_0.15-2ubuntu1_armhf.deb arm-linux-gnueabihf
+	siphon-package ${pn}_0.15-2ubuntu1_amd64.deb x86_64-linux-gnu
+done
 siphon-magic-bin mosquitto
+siphon-magic-bin mosquitto_pub
+siphon-magic-bin mosquitto_sub
 
 # redis-server
 for pn in redis-server redis-tools; do
@@ -93,6 +97,7 @@ dl-ext http://mirrors.kernel.org/ubuntu/pool/universe/j/jemalloc/libjemalloc1_3.
 siphon-package libjemalloc1_3.5.1-2_armhf.deb arm-linux-gnueabihf
 siphon-package libjemalloc1_3.5.1-2_amd64.deb x86_64-linux-gnu
 siphon-magic-bin redis-server
+siphon-magic-bin redis-cli
 
 # sphere-client
 stage-add sources/sphere-client/ninjapack/root/opt/ninjablocks/sphere-client sphere-client

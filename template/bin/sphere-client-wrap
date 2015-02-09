@@ -2,6 +2,10 @@
 
 mkdir -p ${SNAPP_APP_DATA_PATH}/etc/opt/ninja
 
+export DEBUG=t
+
+cd ${SNAPP_APP_PATH}/sphere-client
+
 ${SNAPP_APP_PATH}/sphere-client/sphere-client \
 --cloud-production \
 --credentialFile ${SNAPP_APP_DATA_PATH}/etc/opt/ninja/credentials.json \

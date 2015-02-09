@@ -1,7 +1,7 @@
 name: ninjasphere
 vendor: Theo Julienne <theo@ninjablocks.com>
 architecture: [amd64, armhf]
-version: 0.0.0
+version: 0.0.1
 icon: meta/nina.svg
 services:
  - name: mosquitto
@@ -16,6 +16,10 @@ services:
  - name: mqtt-bridgeify
    description: "Ninja Sphere Cloud MQTT Bridge"
    start: ./bin/mqtt-bridgeify-wrap
+binaries:
+ - name: ./bin/redis-cli
+ - name: ./bin/pub
+ - name: ./bin/sub
 ports:
   required: 8000,1883,6379
 integration:

@@ -1,2 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
+if [[ $1 == "sphere-homecloud" ]]; then
+	${SNAPP_APP_PATH}/sphere-go-homecloud/sphere-go-homecloud >/dev/null 2>&1 &
+else
+	echo "Unknown job: $1"
+	exit 2
+fi
