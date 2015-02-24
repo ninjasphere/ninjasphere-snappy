@@ -4,3 +4,5 @@ src_cache
 staging-snappy
 *.snap
 sources/*
+device_part_ninjasphere.tar.xz
+ninjasphere-snappy.img
