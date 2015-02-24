@@ -3,6 +3,6 @@ intermediate
 src_cache
 staging-snappy
 *.snap
-sources/*
+framework/sources/*
 device_part_ninjasphere.tar.xz
 ninjasphere-snappy.img
