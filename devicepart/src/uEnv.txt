@@ -1,0 +1,17 @@
+# hardware specific overrides for the ninjasphere developer board
+#
+loadfiles_ninja=run loadkernel_ninja; run loadinitrd_ninja
+loadkernel_ninja=fatload mmc ${mmcdev} ${kloadaddr} ${snappy_ab}/${kernel_file_ninja}
+loadinitrd_ninja=fatload mmc ${mmcdev} ${rdaddr} ${snappy_ab}/${initrd_file_ninja}
+
+kloadaddr=0x80200000
+rdaddr=0x81000000
+
+kernel_file_ninja=uImage
+initrd_file_ninja=uInitrd
+mmcrootfstype=ext4
+initrd_addr=${rdaddr}
+
+snappy_boot_ninja=if test "${snappy_mode}" = "try"; then if fatload mmc ${mmcdev} ${snappy_stamp}i 0; then if test "${snappy_ab}" = "a"; then setenv snappy_ab "b"; else setenv snappy_ab "a"; fi; fi; fi; run loadfiles_ninja; setenv mmcroot /dev/disk/by-label/system-${snappy_ab} ${snappy_cmdline}; run mmcargs; bootm ${kloadaddr} ${rdaddr}
+
+uenvcmd=fatload mmc ${mmcdev} ${loadaddr} snappy-system.txt; env import -t $loadaddr $filesize; run snappy_boot_ninja

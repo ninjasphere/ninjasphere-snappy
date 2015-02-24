@@ -1,4 +1,4 @@
-DEVICE_PART=device_part_ninjasphere.tar.xz
+DEVICE_PART=device_part_ninjasphere_mod.tar.xz
 TARGET_IMAGE=ninjasphere-snappy.img
 FRAMEWORK_SNAP=ninjasphere_0.0.8_multi.snap
 
@@ -14,8 +14,11 @@ $(TARGET_IMAGE): $(DEVICE_PART) $(FRAMEWORK_SNAP) _always
 		--developer-mode \
 		--install $(FRAMEWORK_SNAP)
 
-$(DEVICE_PART):
-	wget https://firmware.sphere.ninja/snappy/$(DEVICE_PART)
+$(DEVICE_PART): ../devicepart/$(DEVICE_PART)
+	cp ../devicepart/$(DEVICE_PART) .
+
+../devicepart/$(DEVICE_PART):
+	make -C ../devicepart
 
 $(FRAMEWORK_SNAP): ../framework/$(FRAMEWORK_SNAP)
 	cp ../framework/$(FRAMEWORK_SNAP) $(FRAMEWORK_SNAP)
