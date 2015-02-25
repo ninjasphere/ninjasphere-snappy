@@ -1,7 +1,7 @@
 name: ninjasphere
 vendor: Theo Julienne <theo@ninjablocks.com>
 architecture: [amd64, armhf]
-version: 0.0.10
+version: 0.0.11
 type: framework
 icon: meta/ninjasphere.svg
 services:
@@ -24,6 +24,8 @@ binaries:
 ports:
   required: 8000,1883,6379
 integration:
+  framework:
+    framework: meta/ninjasphere.framework
   mqtt-bridgeify:
     apparmor-profile: meta/mqtt-bridgeify.profile
   sphere-client:
