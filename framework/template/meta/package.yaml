@@ -1,7 +1,7 @@
 name: ninjasphere
 vendor: Theo Julienne <theo@ninjablocks.com>
 architecture: [amd64, armhf]
-version: 0.0.8
+version: 0.0.9
 icon: meta/nina.svg
 services:
  - name: mosquitto

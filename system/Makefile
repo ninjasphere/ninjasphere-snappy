@@ -1,6 +1,6 @@
 DEVICE_PART=device_part_ninjasphere_mod.tar.xz
 TARGET_IMAGE=ninjasphere-snappy.img
-FRAMEWORK_SNAP=ninjasphere_0.0.8_multi.snap
+FRAMEWORK_SNAP=ninjasphere_$(shell ../framework/ver.sh)_multi.snap
 
 all: $(TARGET_IMAGE)
 
@@ -27,3 +27,6 @@ $(FRAMEWORK_SNAP): ../framework/$(FRAMEWORK_SNAP)
 	make -C ../framework sources binaries snap
 
 _always:
+
+clean:
+	rm -rf *.snap *.xz *.img
