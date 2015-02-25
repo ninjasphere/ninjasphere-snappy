@@ -5,6 +5,6 @@ staging-snappy
 *.snap
 framework/sources/*
 device_part_ninjasphere.tar.xz
-ninjasphere-snappy.img
+ninjasphere-snappy*.img
 *.xz
 tmp
