@@ -1,8 +1,9 @@
 name: ninjasphere
 vendor: Theo Julienne <theo@ninjablocks.com>
 architecture: [amd64, armhf]
-version: 0.0.9
-icon: meta/nina.svg
+version: 0.0.10
+type: framework
+icon: meta/ninjasphere.svg
 services:
  - name: mosquitto
    description: "Mosquitto MQTT Broker"
