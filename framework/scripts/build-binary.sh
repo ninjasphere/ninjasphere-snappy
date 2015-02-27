@@ -8,11 +8,11 @@ mkdir -p intermediate
 
 if [ ! -d $DIR ]; then
 	git clone git@github.com:${REPO}.git $DIR
+else
+	pushd $DIR
+	git pull
+	popd
 fi
-
-pushd $DIR
-git pull
-popd
 
 PLATFORMS="linux/amd64 linux/arm"
 

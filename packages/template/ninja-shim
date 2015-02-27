@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export sphere_installDirectory=/apps/ninjasphere/current
+export PATH=/apps/ninjasphere/current/bin/:$SNAPP_APP_PATH/bin:$PATH
+
+exec "$@"

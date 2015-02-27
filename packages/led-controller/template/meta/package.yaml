@@ -1,0 +1,12 @@
+name: sphere-led-controller
+vendor: Theo Julienne <theo@ninjablocks.com>
+architecture: [armhf]
+version: 2.0.2-33
+icon: meta/led-controller.svg
+services:
+ - name: sphere-led-controller
+   description: "Sphere LED and Gesture Controller"
+   start: ./ninja-shim ./sphere-go-led-controller-wrap
+integration:
+  sphere-led-controller:
+    apparmor-profile: meta/sphere-led-controller.profile

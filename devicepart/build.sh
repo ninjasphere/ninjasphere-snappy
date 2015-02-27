@@ -9,6 +9,7 @@ mkdir -p tmp
 cd tmp
 tar xJvf ../device_part_ninjasphere.tar.xz
 
+mkdir -p boot
 cd boot
 rm uEnv*.txt
 cp ../../src/uEnv.txt .
