@@ -4,4 +4,4 @@
 export FRAMEWORK_LATEST=$(ls -1v /var/lib/apps/ninjasphere | tail -1)
 export SNAPP_APP_DATA_PATH=/var/lib/apps/ninjasphere/${FRAMEWORK_LATEST}
 
-exec ./sphere-go-led-controller --enableControl=true
+exec ./sphere-go-led-controller --enableControl=true --led.tty=/dev/ttyO3

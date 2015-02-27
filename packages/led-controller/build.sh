@@ -6,7 +6,9 @@ REPO_PATH=sphere-go-led-controller
 . ../packaging.sh
 
 clone-latest ${REPO_PATH} ${REPO_URL}
-build-go-intermediates ${REPO_PATH} "linux/arm"
+if [[ ! -f custom-sphere-go-led-controller ]]; then
+	build-go-intermediates ${REPO_PATH} "linux/arm"
+fi
 
 begin-build-staging
 
