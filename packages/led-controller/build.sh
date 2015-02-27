@@ -10,7 +10,12 @@ build-go-intermediates ${REPO_PATH} "linux/arm"
 
 begin-build-staging
 
-	install-intermediate-single-arch "linux/arm" "sphere-go-led-controller"
+	if [[ -f custom-sphere-go-led-controller ]]; then
+		chmod +x custom-sphere-go-led-controller
+		cp custom-sphere-go-led-controller ${STAGING_DIR}/sphere-go-led-controller
+	else
+		install-intermediate-single-arch "linux/arm" "sphere-go-led-controller"
+	fi
 
 	# extra stuff
 	cp -R ${REPO_PATH}/ninjapack/root/opt/ninjablocks/drivers/sphere-go-led-controller/* ${STAGING_DIR}
