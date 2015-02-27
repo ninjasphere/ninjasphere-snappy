@@ -1,5 +1,7 @@
 #!/bin/bash
 
+insmod gestic.ko
+
 # hack so we can read creds from the framework
 export FRAMEWORK_LATEST=$(ls -1v /var/lib/apps/ninjasphere | tail -1)
 export SNAPP_APP_DATA_PATH=/var/lib/apps/ninjasphere/${FRAMEWORK_LATEST}

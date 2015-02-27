@@ -208,4 +208,7 @@
   # And creds access, just for ledcontroller. REMOVE FOR DRIVERS AND APPS!
   /var/lib/apps/ninjasphere/ r,
   /var/lib/apps/ninjasphere/*/etc/opt/ninja/** rk,
+  # And REALLY hax, allowing insmod for now (yes yes, this defeats AppArmor completely, TODO move to base system, device part or framework :-)
+  /bin/kmod ixr,
+  capability sys_module,
 }

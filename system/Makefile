@@ -3,10 +3,13 @@ FRAMEWORK_SNAP=ninjasphere_$(shell ../framework/ver.sh)_multi.snap
 TARGET_IMAGE=ninjasphere-snappy-$(shell ../framework/ver.sh).img
 WEBDM_VERSION=$(shell ./get-webdm-version.sh)
 WEBDM_PACKAGE=webdm_$(WEBDM_VERSION)_multi.snap
+LED_CONTROLLER_VERSION=$(shell ../packages/ver.sh led-controller)
+LED_CONTROLLER_PACKAGE=../packages/led-controller/sphere-led-controller_$(LED_CONTROLLER_VERSION)_multi.snap
 
 all: $(TARGET_IMAGE)
 
 $(TARGET_IMAGE): $(DEVICE_PART) $(FRAMEWORK_SNAP) $(WEBDM_PACKAGE) _always
+	make -C ../packages
 	sudo ubuntu-device-flash core \
 		--size 3 \
 		-o $(TARGET_IMAGE) \
@@ -15,7 +18,8 @@ $(TARGET_IMAGE): $(DEVICE_PART) $(FRAMEWORK_SNAP) $(WEBDM_PACKAGE) _always
 		--device-part $(DEVICE_PART) \
 		--developer-mode \
 		--install $(FRAMEWORK_SNAP) \
-		--install $(WEBDM_PACKAGE)
+		--install $(WEBDM_PACKAGE) \
+		--install $(LED_CONTROLLER_PACKAGE)
 
 $(DEVICE_PART): ../devicepart/$(DEVICE_PART)
 	cp ../devicepart/$(DEVICE_PART) .
