@@ -1,0 +1,12 @@
+name: sphere-driver-lifx
+vendor: Theo Julienne <theo@ninjablocks.com>
+architecture: [armhf]
+version: 1.1.0
+icon: meta/lifx.svg
+services:
+ - name: sphere-driver-lifx
+   description: "Sphere LIFX Driver"
+   start: ./ninja-shim ./sphere-driver-lifx
+integration:
+  sphere-driver-lifx:
+    apparmor-profile: meta/sphere-driver-lifx.profile

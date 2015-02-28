@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec ./driver-go-lifx
