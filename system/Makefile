@@ -38,7 +38,7 @@ webdm: $(WEBDM_PACKAGE)
 $(WEBDM_PACKAGE):
 	rm -rf webdm*.snap
 	go get github.com/sergiusens/store-get
-	$(GOPATH)/bin/store-get webdm
+	"$(GOPATH)/bin/store-get" webdm
 
 _always:
 
