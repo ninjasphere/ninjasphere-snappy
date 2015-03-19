@@ -27,3 +27,6 @@ make -C /data/system
 ```
 
 Note that SSH pulls for private repositories will fail, but it will still build.
+
+##Ubuntu Pre-requisites
+If you want to run the build on an Ubuntu VM, the file scripts/ubuntu-prereqs.sh will install the necessary pre-reqs and update ~/.bashrc.
