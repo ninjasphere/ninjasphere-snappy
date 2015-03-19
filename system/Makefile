@@ -12,7 +12,7 @@ $(TARGET_IMAGE): $(DEVICE_PART) $(FRAMEWORK_SNAP) $(WEBDM_PACKAGE) _always
 	make -C ../packages
 	sudo ubuntu-device-flash core \
 		--size 3 \
-		-o $(TARGET_IMAGE) \
+		-o /tmp/$(TARGET_IMAGE) \
 		--channel ubuntu-core/devel-proposed \
 		--device generic_armhf \
 		--device-part $(DEVICE_PART) \
@@ -20,6 +20,8 @@ $(TARGET_IMAGE): $(DEVICE_PART) $(FRAMEWORK_SNAP) $(WEBDM_PACKAGE) _always
 		--install $(FRAMEWORK_SNAP) \
 		--install $(WEBDM_PACKAGE) \
 		--install $(LED_CONTROLLER_PACKAGE)
+	rm -rf $(TARGET_IMAGE)
+	mv /tmp/$(TARGET_IMAGE) $(TARGET_IMAGE)
 
 $(DEVICE_PART): ../devicepart/$(DEVICE_PART)
 	cp ../devicepart/$(DEVICE_PART) .
@@ -38,6 +40,7 @@ webdm: $(WEBDM_PACKAGE)
 $(WEBDM_PACKAGE):
 	rm -rf webdm*.snap
 	go get github.com/sergiusens/store-get
+	test -x $(GOPATH)/bin/store-get || { mkdir -p $(GOPATH)/bin; cp $(GOBIN)/store-get $(GOPATH)/bin/store-get; }
 	"$(GOPATH)/bin/store-get" webdm
 
 _always:

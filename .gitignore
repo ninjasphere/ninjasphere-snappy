@@ -8,3 +8,6 @@ device_part_ninjasphere.tar.xz
 ninjasphere-snappy*.img
 *.xz
 tmp
+.gopath
+docker-build-env/*.tar.gz
+system/store-get
