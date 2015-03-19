@@ -6,6 +6,10 @@ REPO_PATH=sphere-go-led-controller
 . ../packaging.sh
 
 clone-latest ${REPO_PATH} ${REPO_URL}
+
+# MW tweak to nuke some new sym link added to the repo.
+rm -rf ${REPO_PATH}/images/user || true
+
 if [[ ! -f custom-sphere-go-led-controller ]]; then
 	build-go-intermediates ${REPO_PATH} "linux/arm"
 fi
