@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPO_URL=git@github.com:ninjasphere/sphere-go-led-controller.git
+REPO_URL=https://github.com/ninjasphere/sphere-go-led-controller.git
 REPO_PATH=sphere-go-led-controller
 
 . ../packaging.sh
