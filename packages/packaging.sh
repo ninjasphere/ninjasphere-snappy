@@ -60,3 +60,37 @@ apply-template-staging() {
 	cp -R ../template/* _staging/
 }
 
+check-sha1() {
+	local file=$1
+	local sha1=$2
+
+	test -f "$file" &&
+	current=$(openssl sha1 < "$file" | cut -f2 -d' ') &&
+	if test "$current" != "$sha1"; then
+		echo "'$current' does not match required '$sha1'" 1>&2
+		false
+	fi
+}
+
+fetch-apt() {
+	local repo=$1
+	local path=$2
+	local file=$3
+	local sha1=$4
+
+	if ! check-sha1 "$file" "$sha1"; then
+		rm -rf "$file"
+		curl -s "$repo/$path" > "$file"
+	fi
+	check-sha1 "$file" "$sha1" || ( echo "failed to verify sha1 of '$repo/$path' - '$sha1'" 1>&2;  exit 1 )
+}
+
+version-from-deb() {
+	local file=$1
+	echo "$file" | sed "s/.*_\([^~]*\)~.*/\1/"
+}
+
+apply-version() {
+	local version=$1
+	sed -i"" "s/{VERSION}/$version/" _staging/meta/package.yaml
+}
