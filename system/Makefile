@@ -20,7 +20,7 @@ $(TARGET_IMAGE): $(DEVICE_PART) $(FRAMEWORK_SNAP) $(WEBDM_PACKAGE) _always
 		--install $(FRAMEWORK_SNAP) \
 		--install $(WEBDM_PACKAGE) \
 		--install $(LED_CONTROLLER_PACKAGE)
-	rm $(TARGET_IMAGE)
+	rm -rf $(TARGET_IMAGE)
 	mv /tmp/$(TARGET_IMAGE) $(TARGET_IMAGE)
 
 $(DEVICE_PART): ../devicepart/$(DEVICE_PART)
