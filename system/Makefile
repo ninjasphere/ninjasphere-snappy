@@ -6,7 +6,7 @@ WEBDM_PACKAGE=webdm_$(WEBDM_VERSION)_multi.snap
 
 LED_CONTROLLER_VERSION=$(shell ../packages/ver.sh led-controller)
 WIRELESS_VERSION=$(shell ../packages/ver.sh sphere-wireless)
-ZIGBEE_VERSION=$(shell ../packages/ver.sh zigbee-zstack-gateway)
+ZIGBEE_VERSION=0.1.0
 
 LED_CONTROLLER_PACKAGE=../packages/led-controller/sphere-led-controller_$(LED_CONTROLLER_VERSION)_multi.snap
 WIRELESS_PACKAGE=../packages/sphere-wireless/sphere-wireless_$(WIRELESS_VERSION)_multi.snap

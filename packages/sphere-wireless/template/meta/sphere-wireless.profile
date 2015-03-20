@@ -188,8 +188,9 @@
   # Specified write permissions
   /sys/bus/i2c/devices/i2c-0/new_device rwk,
 
-  # wpa command
+  # wpa commands
   /sbin/wpa_supplicant ixr,
+  /sbin/wpa_cli ixr,
 
   capability net_admin,
   capability net_raw,
