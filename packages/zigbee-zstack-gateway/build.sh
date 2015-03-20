@@ -1,9 +1,9 @@
 #!/bin/bash
 
 APT_URL=https://s3.amazonaws.com/ninjablocks-apt-repo
-APT_DEB=pool/main/z/zigbee-zstack-gateway/zigbee-zstack-gateway_0.1.0~trustyspheramid-7_armhf.deb
+APT_DEB=pool/main/z/zigbee-zstack-gateway/zigbee-zstack-gateway_0.1.0~trustyspheramid-8_armhf.deb
 APT_FILE=$(basename "$APT_DEB")
-APT_SHA1=daf553b7e49d59379342082ed4815a3d58ae8d63
+APT_SHA1=1116f4d0beeef172b22843e79a90c43ab70f398b
 
 . ../packaging.sh
 
