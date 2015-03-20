@@ -10,3 +10,6 @@ services:
 integration:
   zigbee-zstack-gateway:
     apparmor-profile: meta/zigbee-zstack-gateway.profile
+ports:
+  required: 2533, 2536, 2540, 2541, 2525
+
