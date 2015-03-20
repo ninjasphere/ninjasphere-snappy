@@ -3,8 +3,14 @@ FRAMEWORK_SNAP=ninjasphere_$(shell ../framework/ver.sh)_multi.snap
 TARGET_IMAGE=ninjasphere-snappy-$(shell ../framework/ver.sh).img
 WEBDM_VERSION=$(shell ./get-webdm-version.sh)
 WEBDM_PACKAGE=webdm_$(WEBDM_VERSION)_multi.snap
+
 LED_CONTROLLER_VERSION=$(shell ../packages/ver.sh led-controller)
+WIRELESS_VERSION=$(shell ../packages/ver.sh sphere-wireless)
+ZIGBEE_VERSION=$(shell ../packages/ver.sh zigbee-zstack-gateway)
+
 LED_CONTROLLER_PACKAGE=../packages/led-controller/sphere-led-controller_$(LED_CONTROLLER_VERSION)_multi.snap
+WIRELESS_PACKAGE=../packages/sphere-wireless/sphere-wireless_$(WIRELESS_VERSION)_multi.snap
+ZIGBEE_PACKAGE=../packages/zigbee-zstack-gateway/zigbee-zstack-gateway_$(ZIGBEE_VERSION)_multi.snap
 
 all: $(TARGET_IMAGE)
 
@@ -19,7 +25,9 @@ $(TARGET_IMAGE): $(DEVICE_PART) $(FRAMEWORK_SNAP) $(WEBDM_PACKAGE) _always
 		--developer-mode \
 		--install $(FRAMEWORK_SNAP) \
 		--install $(WEBDM_PACKAGE) \
-		--install $(LED_CONTROLLER_PACKAGE)
+		--install $(LED_CONTROLLER_PACKAGE) \
+		--install $(ZIGBEE_PACKAGE) \
+		--install $(WIRELESS_PACKAGE)
 	rm -rf $(TARGET_IMAGE)
 	mv /tmp/$(TARGET_IMAGE) $(TARGET_IMAGE)
 
