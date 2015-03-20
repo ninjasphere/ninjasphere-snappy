@@ -210,8 +210,10 @@
   /sbin/dhclient ixr,
   /sbin/ifconfig ixr,
   /sbin/dhclient-script ixr,
-  network packet raw,
+
   /var/lib/dhcp/  rw,
   /var/lib/dhcp/*  rw,
   /run/dhclient.wlan0.pid rw,
+
+  network packet raw,
 }
