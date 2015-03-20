@@ -6,7 +6,6 @@ export ZBEE_SERIAL_PORT=ttyO4
 export LD_LIBRARY_PATH=${SNAPP_APP}/servers
 
 cd ${SNAPP_APP}/servers &&
-test -L ./dbpath &&
-rm ./dbpath &&
+! test -L ./dbpath || rm ./dbpath &&
 ln -sf ${SNAPP_APP_DATA_PATH} ./dbpath &&
 exec ./zigbeeHAgw bbb
