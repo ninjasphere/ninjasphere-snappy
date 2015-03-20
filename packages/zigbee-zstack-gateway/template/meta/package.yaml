@@ -1,0 +1,12 @@
+name: zigbee-zstack-gateway
+vendor: Jon Seymour <jon@ninjablocks.com>
+architecture: [armhf]
+version: {VERSION}
+icon: meta/zigbee-zstack-gateway.svg
+services:
+ - name: zigbee-zstack-gateway
+   description: "Sphere Zigbee ZStack Gateway"
+   start: ./zigbee-zstack-gateway ./servers/zigbeeHAgw
+integration:
+  zigbee-zstack-gateway:
+    apparmor-profile: meta/zigbee-zstack-gateway.profile
