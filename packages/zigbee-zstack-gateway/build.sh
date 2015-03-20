@@ -16,9 +16,15 @@ dpkg -x "${APT_FILE}" ${STAGING_DIR}
 rm -rf ${STAGING_DIR}/etc/
 rsync -rav ${STAGING_DIR}/opt/zigbee-zstack-gateway/ ${STAGING_DIR}/
 rsync -rav ${STAGING_DIR}/usr/lib/ ${STAGING_DIR}/servers/
-sed -i.bak "/DATABASE_PATH=/d" ${STAGING_DIR}/servers/nwkmgr_config.ini
-rm ${STAGING_DIR}/servers/nwkmgr_config.ini.bak
-echo "DATABASE_PATH=./dbpath" >> ${STAGING_DIR}/servers/nwkmgr_config.ini
+
+
+(
+	cd ${STAGING_DIR}/servers/ &&
+	sed -i.bak "/DATABASE_PATH=/d" nwkmgr_config.ini &&
+	echo "DATABASE_PATH=./dbpath" >> nwkmgr_config.ini &&
+	sed -i.bak 's|^devPath="/dev/tty.zigbee"|#&|;s|^#devPath="/dev/ttyO4"|devPath="/dev/ttyO4"|' NPI_Gateway.cfg
+) &&
+rm ${STAGING_DIR}/servers/*.bak
 
 # location fixups
 
