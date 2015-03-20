@@ -2,5 +2,5 @@
 cd ${SNAPP_APP:-.}/servers
 test -L ./dbpath && rm .dbpath
 ln -sf ${SNAPP_APP_DATA_PATH:-.} ./dbpath
-export ZBEE_SERIAL_PORT=/dev/ttyO4
+export ZBEE_SERIAL_PORT=ttyO4
 exec ./zigbeeHAgw bbb
