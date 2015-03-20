@@ -1,8 +1,6 @@
 #!/bin/bash
 
-if [[ ! -f device_part_ninjasphere.tar.xz ]]; then
-	wget https://firmware.sphere.ninja/snappy/device_part_ninjasphere.tar.xz
-fi
+wget -N https://firmware.sphere.ninja/snappy/2014-03-20/device_part_ninjasphere-bundledwifi.tar.xz -O device_part_ninjasphere.tar.xz
 
 rm -rf tmp
 mkdir -p tmp
