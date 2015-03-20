@@ -1,7 +1,7 @@
 name: sphere-wireless
 vendor: Mark Wolfe <mark.wolfe@ninjablocks.com>
 architecture: [armhf]
-version: 2.0.2-33
+version: 1.0.0
 icon: meta/sphere-wireless.svg
 services:
  - name: sphere-wireless
