@@ -20,8 +20,8 @@ rsync -rav ${STAGING_DIR}/usr/lib/ ${STAGING_DIR}/servers/
 
 (
 	cd ${STAGING_DIR}/servers/ &&
-	sed -i.bak "/DATABASE_PATH=/d" nwkmgr_config.ini &&
-	echo "DATABASE_PATH=./dbpath" >> nwkmgr_config.ini &&
+	sed -i.bak "/DATABASE_PATH *= */d" nwkmgr_config.ini &&
+	echo 'DATABASE_PATH="./dbpath/"' >> nwkmgr_config.ini &&
 	sed -i.bak 's|^devPath="/dev/tty.zigbee"|#&|;s|^#devPath="/dev/ttyO4"|devPath="/dev/ttyO4"|' NPI_Gateway.cfg
 ) &&
 rm ${STAGING_DIR}/servers/*.bak
