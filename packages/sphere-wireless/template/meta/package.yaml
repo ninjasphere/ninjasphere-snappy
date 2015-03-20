@@ -1,0 +1,15 @@
+name: sphere-wireless
+vendor: Mark Wolfe <mark.wolfe@ninjablocks.com>
+architecture: [armhf]
+version: 1.0.0
+icon: meta/sphere-wireless.svg
+services:
+ - name: sphere-wireless
+   description: "Sphere Wireless Configuration"
+   start: ./ninja-shim ./sphere-wireless-wrap
+ - name: sphere-wireless-dhcp
+   description: "Sphere Wireless DHCP Configuration"
+   start: ./sphere-wireless-dhcp
+integration:
+  sphere-wireless:
+    apparmor-profile: meta/sphere-wireless.profile
