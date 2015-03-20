@@ -6,7 +6,7 @@ icon: meta/sphere-wireless.svg
 services:
  - name: sphere-wireless
    description: "Sphere Wireless Configuration"
-   start: ./ninja-shim ./sphere-wireless
+   start: ./ninja-shim ./sphere-wireless-wrap
 integration:
-  sphere-led-controller:
+  sphere-wireless:
     apparmor-profile: meta/sphere-wireless.profile

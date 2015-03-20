@@ -1,5 +1,7 @@
 #!/bin/bash
 
+TMPDIR=${SNAPP_APP_DATA_PATH}/sphere-wireless
+
 WPA_CONF_PATH="${SNAPP_APP_DATA_PATH}/sphere-wireless/wpa_supplicant.conf"
 
 mkdir -p ${SNAPP_APP_DATA_PATH}/sphere-wireless
@@ -9,8 +11,8 @@ if [ -e "${WPA_CONF_PATH}" ]; then
 	echo "WPA configuration $WPA_CONF_PATH exists."
 else
 	echo "WPA configuration $WPA_CONF_PATH being generated."
-	echo "${WPA_CONF_PATH}" << EOF
-ctrl_interface=${SNAPP_APP_DATA_PATH}/sphere-wireless/run/wpa_supplicant
+	cat >"${WPA_CONF_PATH}" << EOF
+ctrl_interface=${SNAPP_APP_DATA_PATH}/sphere-wireless/var/run/wpa_supplicant
 update_config=1
 EOF
 
