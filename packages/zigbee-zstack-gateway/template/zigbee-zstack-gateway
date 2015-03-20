@@ -1,6 +1,7 @@
 #!/bin/sh
-cd ${SNAPP_APP:-.}/servers
+cd ${SNAPP_APP:-$(pwd)}/servers
 test -L ./dbpath && rm .dbpath
-ln -sf ${SNAPP_APP_DATA_PATH:-.} ./dbpath
+ln -sf ${SNAPP_APP_DATA_PATH:-$(pwd)} ./dbpath
 export ZBEE_SERIAL_PORT=ttyO4
+export LD_LIBRARY_PATH=$(pwd)
 exec ./zigbeeHAgw bbb
