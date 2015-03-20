@@ -6,7 +6,7 @@ icon: meta/zigbee-zstack-gateway.svg
 services:
  - name: zigbee-zstack-gateway
    description: "Sphere Zigbee ZStack Gateway"
-   start: ./zigbee-zstack-gateway ./servers/zigbeeHAgw
+   start: ./zigbee-zstack-gateway
 integration:
   zigbee-zstack-gateway:
     apparmor-profile: meta/zigbee-zstack-gateway.profile
