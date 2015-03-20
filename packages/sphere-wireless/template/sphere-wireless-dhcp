@@ -1,0 +1,4 @@
+#!/bin/bash
+
+/sbin/ifconfig wlan0 up
+/sbin/dhclient -1 -v -pf /run/dhclient.wlan0.pid -lf /var/lib/dhcp/dhclient.wlan0.leases wlan0

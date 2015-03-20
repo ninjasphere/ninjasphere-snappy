@@ -7,6 +7,9 @@ services:
  - name: sphere-wireless
    description: "Sphere Wireless Configuration"
    start: ./ninja-shim ./sphere-wireless-wrap
+ - name: sphere-wireless-dhcp
+   description: "Sphere Wireless DHCP Configuration"
+   start: ./sphere-wireless-dhcp
 integration:
   sphere-wireless:
     apparmor-profile: meta/sphere-wireless.profile

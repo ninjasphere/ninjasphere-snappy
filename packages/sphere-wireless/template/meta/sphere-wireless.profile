@@ -7,7 +7,6 @@
 
 ###PROFILEATTACH### (attach_disconnected) {
   #include <abstractions/base>
-  #include <abstractions/dbus>
   #include <abstractions/consoles>
   #include <abstractions/openssl>
 
@@ -203,5 +202,15 @@
 
   /run/wpa_supplicant/  rw,
   /run/wpa_supplicant/* rw,
+  /tmp/* rw,
   /run/sendsigs.omit.d/wpasupplicant.pid rw,
+
+  # dhclient command
+  /sbin/dhclient ixr,
+  /sbin/ifconfig ixr,
+  /sbin/dhclient-script ixr,
+  network packet raw,
+  /var/lib/dhcp/  rw,
+  /var/lib/dhcp/*  rw,
+  /run/dhclient.wlan0.pid rw,
 }
