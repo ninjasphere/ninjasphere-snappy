@@ -1,0 +1,12 @@
+name: {NAME}
+vendor: Jon Seymour <jon@ninjablocks.com>
+architecture: [armhf]
+version: {VERSION}
+icon: meta/{NAME}.svg
+services:
+ - name: {NAME}
+   description: "Ninja Sphere Zigbee Driver"
+   start: ./{NAME}
+integration:
+  {NAME}:
+    apparmor-profile: meta/{NAME}.profile
