@@ -75,22 +75,34 @@ check-sha1() {
 fetch-apt() {
 	local repo=$1
 	local path=$2
-	local file=$3
-	local sha1=$4
+	local sha1=$3
+
+	file=$(basename "$path")
 
 	if ! check-sha1 "$file" "$sha1"; then
 		rm -rf "$file"
 		curl -s "$repo/$path" > "$file"
 	fi
 	check-sha1 "$file" "$sha1" || ( echo "failed to verify sha1 of '$repo/$path' - '$sha1'" 1>&2;  exit 1 )
+	echo "$file"
 }
 
 version-from-deb() {
 	local file=$1
-	echo "$file" | sed "s/.*_\([^~]*\)~.*/\1/"
+	echo "$file" | sed "s/.*_\([^~]*\)~[^-]*-\([^_]*\).*/\1-\2/"
+}
+
+name-from-deb() {
+	local file=$1
+	echo $(basename "$file") | sed "s/\([^_]*\)_.*/\1/"
 }
 
 apply-version() {
 	local version=$1
 	sed -i"" "s/{VERSION}/$version/" _staging/meta/package.yaml
+}
+
+apply-name() {
+	local name=$1
+	sed -i"" "s/{NAME}/$name/" _staging/meta/package.yaml
 }
