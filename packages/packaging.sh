@@ -75,14 +75,16 @@ check-sha1() {
 fetch-apt() {
 	local repo=$1
 	local path=$2
-	local file=$3
-	local sha1=$4
+	local sha1=$3
+
+	file=$(basename "$path")
 
 	if ! check-sha1 "$file" "$sha1"; then
 		rm -rf "$file"
 		curl -s "$repo/$path" > "$file"
 	fi
 	check-sha1 "$file" "$sha1" || ( echo "failed to verify sha1 of '$repo/$path' - '$sha1'" 1>&2;  exit 1 )
+	echo "$file"
 }
 
 version-from-deb() {
