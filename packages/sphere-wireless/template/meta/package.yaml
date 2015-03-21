@@ -13,3 +13,5 @@ services:
 integration:
   sphere-wireless:
     apparmor-profile: meta/sphere-wireless.profile
+  sphere-wireless-dhcp:
+    apparmor-profile: meta/sphere-wireless-dhcp.profile

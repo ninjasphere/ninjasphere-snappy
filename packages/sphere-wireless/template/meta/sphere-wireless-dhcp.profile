@@ -189,21 +189,14 @@
   # Specified write permissions
   /sys/bus/i2c/devices/i2c-0/new_device rwk,
 
-  # sphere wireless commands
-  /sbin/wpa_supplicant ixr,
-  /sbin/wpa_cli ixr,
+  # sphere wireless dhcp commands
+  /sbin/dhclient ixr,
+  /sbin/ifconfig ixr,
+  /sbin/dhclient-script ixr,
 
-  capability net_admin,
-  capability net_raw,
-  network packet dgram,
-  network inet dgram,
+  network packet raw,
 
-  /dev/rfkill r,
-  owner @{PROC}/[0-9]*/net/psched r,
-  /sys/devices/pci[0-9]*/**/ieee80211/*/name r,
-
-  /run/wpa_supplicant/  rw,
-  /run/wpa_supplicant/* rw,
-  /tmp/* rw,
-  /run/sendsigs.omit.d/wpasupplicant.pid rw,
+  /var/lib/dhcp/  rw,
+  /var/lib/dhcp/*  rw,
+  /run/dhclient.wlan0.pid rw,
 }
