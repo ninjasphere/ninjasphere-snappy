@@ -87,7 +87,7 @@ fetch-apt() {
 
 version-from-deb() {
 	local file=$1
-	echo "$file" | sed "s/.*_\([^~]*\)~.*/\1/"
+	echo "$file" | sed "s/.*_\([^~]*\)~[^-]*-\([^_]*\).*/\1-\2/"
 }
 
 apply-version() {
