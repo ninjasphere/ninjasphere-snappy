@@ -6,7 +6,7 @@ icon: meta/{NAME}.svg
 services:
  - name: {NAME}
    description: "Ninja Sphere Zigbee Driver"
-   start: ./{NAME}
+   start: ./{NAME}-wrap
 integration:
   {NAME}:
     apparmor-profile: meta/{NAME}.profile
