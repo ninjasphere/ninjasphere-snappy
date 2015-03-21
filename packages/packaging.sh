@@ -90,6 +90,11 @@ version-from-deb() {
 	echo "$file" | sed "s/.*_\([^~]*\)~[^-]*-\([^_]*\).*/\1-\2/"
 }
 
+name-from-deb() {
+	local file=$1
+	echo "$file" | sed "s/\([^_]*\)_.*/\1/"
+}
+
 apply-version() {
 	local version=$1
 	sed -i"" "s/{VERSION}/$version/" _staging/meta/package.yaml
