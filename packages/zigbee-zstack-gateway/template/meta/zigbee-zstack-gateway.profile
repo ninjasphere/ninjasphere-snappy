@@ -2,10 +2,9 @@
 
 #include <tunables/global>
 
-# Specified profile variables
 ###VAR###
 
-###PROFILEATTACH### (attach_disconnected) {
+###PROFILEATTACH### {
   #include <abstractions/base>
   #include <abstractions/consoles>
   #include <abstractions/openssl>
@@ -49,11 +48,12 @@
   /{,usr/}bin/{,e,f,r}grep ixr,
   /{,usr/}bin/env ixr,
   /{,usr/}bin/expr ixr,
+  /{,usr/}bin/false ixr,
   /{,usr/}bin/find ixr,
   /{,usr/}bin/fmt ixr,
   /{,usr/}bin/getopt ixr,
-  /{,usr/}bin/false ixr,
   /{,usr/}bin/head ixr,
+  /{,usr/}bin/hostname ixr,
   /{,usr/}bin/id ixr,
   /{,usr/}bin/igawk ixr,
   /{,usr/}bin/kill ixr,
@@ -113,8 +113,16 @@
 
   # Miscellaneous accesses
   /etc/mime.types r,
+  @{PROC}/ r,
+  /etc/{,writable/}hostname r,
   @{PROC}/sys/kernel/hostname r,
   @{PROC}/sys/kernel/osrelease r,
+  @{PROC}/sys/fs/file-max r,
+  @{PROC}/sys/kernel/pid_max r,
+
+  # this leaks interface names and stats, but not in a way that is traceable
+  # to the user/device
+  @{PROC}/net/dev r,
 
   # Read-only for the install directory
   @{CLICK_DIR}/@{APP_PKGNAME}/                   r,
@@ -144,61 +152,18 @@
   /var/lib/apps/@{APP_PKGNAME}/@{APP_VERSION}/** wl,
 
   # Writable temp area only for this version (launcher will create this
-  # directory on our behalf so only allow readonly on parent)
-  /tmp/snapps/@{APP_PKGNAME}/                  r,
-  /tmp/snapps/@{APP_PKGNAME}/**                rk,
-  /tmp/snapps/@{APP_PKGNAME}/@{APP_VERSION}/   rw,
-  /tmp/snapps/@{APP_PKGNAME}/@{APP_VERSION}/** mrwlkix,
+  # directory on our behalf so only allow readonly on parent). /tmp/snapps can
+  # be removed once the launcher exports TMPDIR correctly
+  /tmp/snap{,p}s/@{APP_PKGNAME}/                  r,
+  /tmp/snap{,p}s/@{APP_PKGNAME}/**                rk,
+  /tmp/snap{,p}s/@{APP_PKGNAME}/@{APP_VERSION}/   rw,
+  /tmp/snap{,p}s/@{APP_PKGNAME}/@{APP_VERSION}/** mrwlkix,
 
-  # No abstractions specified
+  ###ABSTRACTIONS###
 
-  # Rules specified via policy groups
-  # Description: Can access the network
-  # Usage: common
-  #include <abstractions/nameservice>
-  #include <abstractions/ssl_certs>
+  ###POLICYGROUPS###
 
-  @{PROC}/sys/net/core/somaxconn r,
+  ###READS###
 
-  # We want to explicitly deny access to NetworkManager because its DBus API
-  # gives away too much
-  deny dbus (receive, send)
-       bus=system
-       path=/org/freedesktop/NetworkManager,
-  deny dbus (receive, send)
-       bus=system
-       peer=(name=org.freedesktop.NetworkManager),
-
-  # Do the same for ofono (LP: #1226844)
-  deny dbus (receive, send)
-       bus=system
-       interface="org.ofono.Manager",
-
-  # Specified read permissions
-  /etc/hosts.allow rk,
-  /etc/hosts.deny rk,
-  /etc/passwd rk,
-  /proc/cmdline rk,
-  /sys/bus/i2c/devices/0-0050/eeprom rk,
-  /sys/devices/ocp/44e0b000.i2c/i2c-0/0-0050/eeprom rk,
-  @{PROC}/ rk,
-  @{PROC}/** rk,
-  @{PROC}/[0-9]*/stat rk,
-
-  # Specified write permissions
-  /sys/bus/i2c/devices/i2c-0/new_device rwk,
-
-  # Ninja
-  /{,usr/}bin/xxd ixr,
-  /sys/class/net/[a-z0-9]*/address rk,
-  /sys/devices/*/*/net/[a-z0-9]*/address rk,
-  /proc/cmdline rk,
-  /bin/ip ixr,
-  /dev/gestic rwk,
-  /dev/ttyO4 rwk,
-  /dev/tty.zigbee rwk,
-  /sys/class/gpio rwk,
-  /sys/class/gpio/** rwk,
-  /sys/devices/virtual/gpio/** rwk,
-
+  ###WRITES###
 }
