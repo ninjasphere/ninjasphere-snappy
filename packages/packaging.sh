@@ -94,7 +94,7 @@ version-from-deb() {
 
 name-from-deb() {
 	local file=$1
-	echo "$file" | sed "s/\([^_]*\)_.*/\1/"
+	echo $(basename "$file") | sed "s/\([^_]*\)_.*/\1/"
 }
 
 apply-version() {
