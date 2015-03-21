@@ -194,6 +194,10 @@
   /sbin/ifconfig ixr,
   /sbin/dhclient-script ixr,
 
+  capability net_admin,
+  capability net_raw,
+  network packet dgram,
+  network inet dgram,
   network packet raw,
 
   /var/lib/dhcp/  rw,
