@@ -31,6 +31,7 @@ $(TARGET_IMAGE): $(DEVICE_PART) $(FRAMEWORK_SNAP) $(WEBDM_PACKAGE) _always
 		--install $(LED_CONTROLLER_PACKAGE) \
 		--install $(ZIGBEE_PACKAGE) \
 		--install $(DRIVER_GO_ZIGBEE_PACKAGE)
+	./hack-image.sh /tmp/$(TARGET_IMAGE)
 	rm -rf $(TARGET_IMAGE)
 	mv /tmp/$(TARGET_IMAGE) $(TARGET_IMAGE)
 

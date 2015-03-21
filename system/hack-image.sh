@@ -20,7 +20,7 @@ fi
 
 cat >>writable/system-data/var/lib/cloud/seed/nocloud-net/user-data <<EOF
 bootcmd:
-  - modprobe g_serial; ln -sf /lib/systemd/system/getty@.service /etc/systemd/system/getty.target.wants/getty@ttyGS0.service || true; systemctl start getty@ttyGS0.service
+  - modprobe g_serial; ln -sf /lib/systemd/system/getty@.service /etc/systemd/system/getty.target.wants/getty@ttyGS0.service || true
 EOF
 
 cat writable/system-data/var/lib/cloud/seed/nocloud-net/user-data
