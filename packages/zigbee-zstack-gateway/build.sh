@@ -14,10 +14,13 @@ begin-build-staging
 
 dpkg -x "${APT_FILE}" ${STAGING_DIR}
 
-rm -rf ${STAGING_DIR}/etc/
 rsync -rav ${STAGING_DIR}/opt/zigbee-zstack-gateway/ ${STAGING_DIR}/
 rsync -rav ${STAGING_DIR}/usr/lib/ ${STAGING_DIR}/servers/
 
+rm -rf ${STAGING_DIR}/etc/
+rm -rf ${STAGING_DIR}/usr/lib/
+rm -rf ${STAGING_DIR}/opt/
+rm -rf ${STAGING_DIR}/data/
 
 (
 	cd ${STAGING_DIR}/servers/ &&
@@ -27,10 +30,12 @@ rsync -rav ${STAGING_DIR}/usr/lib/ ${STAGING_DIR}/servers/
 	sed -i"" "s|^log=\".*/\([^\"/]*\)\"|log=\"/var/lib/apps/$APT_NAME/$APT_VERSION/\1\"|" NPI_Gateway.cfg
 )
 # location fixups
+rm ${STAGING_DIR}/servers/data
 
 apply-template-staging
 apply-version $APT_VERSION
 apply-name $APT_NAME
+
 
 snappy-build-staging
 
