@@ -1,15 +1,15 @@
-name: zigbee-zstack-gateway
+name: {NAME}
 vendor: Jon Seymour <jon@ninjablocks.com>
 architecture: [armhf]
 version: {VERSION}
-icon: meta/zigbee-zstack-gateway.svg
+icon: meta/{NAME}.svg
 services:
- - name: zigbee-zstack-gateway
+ - name: {NAME}
    description: "Sphere Zigbee ZStack Gateway"
-   start: ./zigbee-zstack-gateway
+   start: ./{NAME}
 integration:
-  zigbee-zstack-gateway:
-    apparmor-profile: meta/zigbee-zstack-gateway.profile
+  {NAME}:
+    apparmor-profile: meta/{NAME}.profile
 ports:
   required: 2533, 2536, 2540, 2541, 2525
 
