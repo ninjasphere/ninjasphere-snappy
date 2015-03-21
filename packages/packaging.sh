@@ -99,3 +99,8 @@ apply-version() {
 	local version=$1
 	sed -i"" "s/{VERSION}/$version/" _staging/meta/package.yaml
 }
+
+apply-name() {
+	local name=$1
+	sed -i"" "s/{NAME}/$name/" _staging/meta/package.yaml
+}
