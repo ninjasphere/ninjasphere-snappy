@@ -209,4 +209,6 @@
   /etc/dhcp/dhclient.conf rk,
   /etc/dhcp/dhclient-enter-hooks.d/ rk,
   /etc/dhcp/dhclient-enter-hooks.d/* rk,
+
+  /etc/resolv.conf rw,
 }

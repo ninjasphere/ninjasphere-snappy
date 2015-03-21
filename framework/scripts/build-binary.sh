@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 REPO=$1
 DIR=sources/$(basename $REPO)
 
