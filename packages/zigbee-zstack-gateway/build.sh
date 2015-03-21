@@ -20,12 +20,11 @@ rsync -rav ${STAGING_DIR}/usr/lib/ ${STAGING_DIR}/servers/
 
 (
 	cd ${STAGING_DIR}/servers/ &&
-	sed -i.bak "/DATABASE_PATH *= */d" nwkmgr_config.ini &&
-	echo 'DATABASE_PATH="./dbpath/"' >> nwkmgr_config.ini &&
-	sed -i.bak 's|^devPath="/dev/tty.zigbee"|#&|;s|^#devPath="/dev/ttyO4"|devPath="/dev/ttyO4"|' NPI_Gateway.cfg
-) &&
-rm ${STAGING_DIR}/servers/*.bak
-
+	sed -i"" "/DATABASE_PATH *= */d" nwkmgr_config.ini &&
+	echo "DATABASE_PATH = \"/var/lib/apps/$APT_NAME/$APT_VERSION/\"" >> nwkmgr_config.ini &&
+	sed -i"" 's|^devPath=".*"|#&|;s|^#devPath="/dev/ttyO4"|devPath="/dev/ttyO4"|' NPI_Gateway.cfg
+	sed -i"" "s|^log=\".*/\([^\"/]*\)\"|log=\"/var/lib/apps/$APT_NAME/$APT_VERSION/\1\"|" NPI_Gateway.cfg
+)
 # location fixups
 
 apply-template-staging

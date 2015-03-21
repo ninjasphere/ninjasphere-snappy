@@ -1,11 +1,14 @@
 #!/bin/sh
-export SNAPP_APP=${SNAPP_APP:-$(pwd)}
-export SNAPP_APP_DATA_PATH=${SNAPP_APP_DATA_PATH:-${SNAPP_APP}/servers}
+app=$(readlink -f "$(pwd)")
+version=$(basename "$app")
+name=$(basename "$(dirname "$app")")
+export SNAPP_APP=${SNAPP_APP:-$app}
+export SNAPP_APP_DATA_PATH=${SNAPP_APP_DATA_PATH:-/var/lib/apps/${name}/${version}}
 export PATH=${SNAPP_APP}/tools:$PATH
 export ZBEE_SERIAL_PORT=ttyO4
+export ZIGBEE_STABLE=${SNAPP_APP_DATA_PATH}/zigbee.stable
 export LD_LIBRARY_PATH=${SNAPP_APP}/servers
 
 cd ${SNAPP_APP}/servers &&
-! test -L ./dbpath || rm ./dbpath &&
-ln -sf ${SNAPP_APP_DATA_PATH} ./dbpath &&
+mkdir -p ${SNAPP_APP_DATA_PATH} &&
 exec ./zigbeeHAgw bbb
