@@ -166,8 +166,15 @@
   ###POLICYGROUPS###
 
   ###READS###
+  @{PROC}/ rk,
+  @{PROC}/** rk,
+  @{PROC}/[0-9]*/stat rk,
 
-  #Zigbee
+  /apps/ninjasphere/*/sphere-schemas/** rk,
+  /apps/ninjasphere/*/config/** rk,
+  /apps/ninjasphere/*/bin/** ixr,
+
+  capability net_admin,
 
   ###WRITES###
 }

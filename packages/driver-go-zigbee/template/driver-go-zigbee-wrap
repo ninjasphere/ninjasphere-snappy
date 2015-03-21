@@ -4,4 +4,4 @@ version=$(basename "$app")
 name=$(basename "$(dirname "$app")")
 export SNAPP_APP=${SNAPP_APP:-$app}
 export SNAPP_APP_DATA_PATH=${SNAPP_APP_DATA_PATH:-/var/lib/apps/${name}/${version}}
-exec ./driver-go-zigbee
+exec ./ninja-shim ./driver-go-zigbee "$@"
