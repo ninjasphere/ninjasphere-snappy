@@ -8,6 +8,8 @@
   #include <abstractions/base>
   #include <abstractions/consoles>
   #include <abstractions/openssl>
+  #include <abstractions/ssl_certs>
+  #include <abstractions/nameservice>
 
   # for python apps/services
   #include <abstractions/python>
@@ -161,9 +163,21 @@
 
   ###ABSTRACTIONS###
 
+  ptrace (trace), 
+  ptrace (read), 
+
   ###POLICYGROUPS###
 
   ###READS###
+
+  #Zigbee
+
+  @{PROC}/ rk,
+  @{PROC}/** rk,
+  @{PROC}/[0-9]*/stat rk,
+
+  /dev/ttyO4 rwk,
+  /bin/stty ixr,
 
   ###WRITES###
 }
