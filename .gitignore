@@ -11,3 +11,4 @@ tmp
 .gopath
 docker-build-env/*.tar.gz
 system/store-get
+_staging/
