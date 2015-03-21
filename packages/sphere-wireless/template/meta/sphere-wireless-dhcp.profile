@@ -193,6 +193,8 @@
   /sbin/dhclient ixr,
   /sbin/ifconfig ixr,
   /sbin/dhclient-script ixr,
+  /bin/run-parts ixr,
+  /bin/ip ixr,
 
   capability net_admin,
   capability net_raw,
@@ -203,4 +205,8 @@
   /var/lib/dhcp/  rw,
   /var/lib/dhcp/*  rw,
   /run/dhclient.wlan0.pid rw,
+  /etc/fstab rk,
+  /etc/dhcp/dhclient.conf rk,
+  /etc/dhcp/dhclient-enter-hooks.d/ rk,
+  /etc/dhcp/dhclient-enter-hooks.d/* rk,
 }
