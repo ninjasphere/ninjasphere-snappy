@@ -1,5 +1,0 @@
-#!/bin/bash
-
-modprobe g_serial
-ln -sf /lib/systemd/system/getty@.service /etc/systemd/system/getty.target.wants/getty@ttyGS0.service
-systemctl start getty@ttyGS0.service
