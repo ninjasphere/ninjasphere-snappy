@@ -164,9 +164,7 @@
   ###POLICYGROUPS###
 
   ###READS###
-  /apps/bin/sphere-installation ixr,
   /proc/cmdline r,
-  /apps/bin/sphere-config ixr,
 
   ###WRITES###
 }

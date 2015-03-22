@@ -39,5 +39,3 @@ integration:
     apparmor: meta/ninjasphere.apparmor
   sphere-serial:
     apparmor-profile: meta/sphere-serial.profile
-  sphere-config:
-    apparmor-profile: meta/sphere-config.profile
