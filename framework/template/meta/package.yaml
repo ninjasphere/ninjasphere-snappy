@@ -21,6 +21,9 @@ binaries:
  - name: ./bin/redis-cli
  - name: ./bin/pub
  - name: ./bin/sub
+ - name: ./bin/sphere-serial
+ - name: ./bin/sphere-config
+ - name: ./bin/sphere-installation
 ports:
   required: 8000,1883,6379
 integration:
@@ -34,3 +37,7 @@ integration:
     apparmor: meta/ninjasphere.apparmor
   redis-server:
     apparmor: meta/ninjasphere.apparmor
+  sphere-serial:
+    apparmor-profile: meta/sphere-serial.profile
+  sphere-config:
+    apparmor-profile: meta/sphere-config.profile
