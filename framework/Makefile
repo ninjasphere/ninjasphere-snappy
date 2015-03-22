@@ -3,8 +3,8 @@ SNAPPY_REMOTE?=10.0.1.14
 
 all:
 
-sources: sources/sphere-config sources/sphere-schemas
-binaries: client director homecloud mqtt-bridgeify
+sources: sources/sphere-config sources/sphere-schemas sources/sphere-global-utils
+binaries: client director homecloud mqtt-bridgeify utils
 
 sources/sphere-config:
 	git clone https://github.com/ninjasphere/sphere-config.git sources/sphere-config
@@ -12,8 +12,14 @@ sources/sphere-config:
 sources/sphere-schemas:
 	git clone https://github.com/ninjasphere/schemas.git sources/sphere-schemas
 
+sources/sphere-global-utils:
+	git clone https://github.com/ninjasphere/sphere-global-utils.git sources/sphere-global-utils
+
 client:
 	./scripts/build-binary.sh ninjasphere/sphere-client
+
+utils:
+	./scripts/build-binary.sh ninjablocks/sphere-utils
 
 director:
 	./scripts/build-binary.sh ninjasphere/sphere-director

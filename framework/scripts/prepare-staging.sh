@@ -107,6 +107,13 @@ stage-magic-bin sphere-client sphere-client/
 stage-add sources/sphere-go-homecloud/ninjapack/root/opt/ninjablocks/sphere-go-homecloud sphere-go-homecloud
 stage-magic-bin sphere-go-homecloud sphere-go-homecloud/
 
+# sphere-global-utils
+stage-add sources/sphere-global-utils/bin .
+
+# sphere-utils
+stage-magic-bin sphere-go-serial bin
+stage-magic-bin sphere-go-config bin
+
 # utils
 stage-magic-bin mqtt-bridgeify bin/
 
