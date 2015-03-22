@@ -26,11 +26,11 @@ $(TARGET_IMAGE): $(DEVICE_PART) $(FRAMEWORK_SNAP) $(WEBDM_PACKAGE) _always
 		--device-part $(DEVICE_PART) \
 		--developer-mode \
 		--install $(FRAMEWORK_SNAP) \
+		--install $(WIRELESS_PACKAGE) \
 		--install $(WEBDM_PACKAGE) \
 		--install $(LED_CONTROLLER_PACKAGE) \
 		--install $(ZIGBEE_PACKAGE) \
-		--install $(DRIVER_GO_ZIGBEE_PACKAGE) \
-		--install $(WIRELESS_PACKAGE)
+		--install $(DRIVER_GO_ZIGBEE_PACKAGE)
 	rm -rf $(TARGET_IMAGE)
 	mv /tmp/$(TARGET_IMAGE) $(TARGET_IMAGE)
 
