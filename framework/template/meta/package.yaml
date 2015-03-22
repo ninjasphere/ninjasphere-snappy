@@ -17,6 +17,9 @@ services:
  - name: mqtt-bridgeify
    description: "Ninja Sphere Cloud MQTT Bridge"
    start: ./bin/mqtt-bridgeify-wrap
+ - name: enable-gadget-serial
+   description: "Enable the USB serial gadget"
+   start: ./bin/enable-gadget-serial
 binaries:
  - name: ./bin/redis-cli
  - name: ./bin/pub
@@ -39,3 +42,5 @@ integration:
     apparmor: meta/ninjasphere.apparmor
   sphere-serial:
     apparmor-profile: meta/sphere-serial.profile
+  enable-gadget-serial:
+    apparmor-profile: meta/enable-gadget-serial.profile
