@@ -1,5 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
-cd $(dirname $0)
-
+cd $(cd "$(dirname "$0")"; pwd -P)
 ./mqtt-bridgeify agent -serial=$(./sphere-serial)

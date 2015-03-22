@@ -1,6 +1,6 @@
 #!/bin/sh
 
-$(dirname $0)/migrate-snappy-data redis
+$(cd "$(dirname "$0")"; pwd -P)/migrate-snappy-data redis
 
 mkdir -p ${SNAPP_APP_DATA_PATH}/redis
 ${SNAPP_APP_PATH}/bin/redis-server --dir ${SNAPP_APP_DATA_PATH}/redis --pidfile ${SNAPP_APP_DATA_PATH}/redis-server.pid --appendonly yes
