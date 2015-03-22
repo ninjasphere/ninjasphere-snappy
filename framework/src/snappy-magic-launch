@@ -7,7 +7,7 @@
 #   - copy this stub in the snapp magic-bin/ directory with the name matching the multiarch binary
 set -e
 
-verbose=true
+verbose=false
 platform=`uname -i`
 plat_abi=
 
@@ -36,11 +36,11 @@ snapp_dir=$SNAPP_APP_PATH
 snapp_name=`echo $snapp_bin | sed -e 's/\(.*\)[.]\([^.]*\)$/\1/g'`
 snapp_org_bin=`echo $snapp_bin | sed -e 's/\(.*\)[.]\([^.]*\)$/\2/g'`
 
-$verbose && echo snapp_name: $snapp_name
-$verbose && echo snapp_bin: $snapp_bin
-$verbose && echo snapp_dir: $snapp_dir
-$verbose && echo snapp_org_bin: $snapp_org_bin
-$verbose && echo plat_abi: $plat_abi
+$verbose && echo snapp_name: $snapp_name 1>&2
+$verbose && echo snapp_bin: $snapp_bin 1>&2
+$verbose && echo snapp_dir: $snapp_dir 1>&2
+$verbose && echo snapp_org_bin: $snapp_org_bin 1>&2
+$verbose && echo plat_abi: $plat_abi 1>&2
 
 REL=$(dirname $0)
 
