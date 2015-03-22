@@ -190,7 +190,7 @@
   /sys/bus/i2c/devices/i2c-0/new_device rwk,
 
   # sphere wireless dhcp commands
-  /sbin/dhclient ixr,
+  /sbin/dhclient uxr,
   /sbin/ifconfig ixr,
   /sbin/dhclient-script ixr,
   /bin/run-parts ixr,
