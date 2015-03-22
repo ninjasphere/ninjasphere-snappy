@@ -1,5 +1,5 @@
 FRAMEWORK_VERSION=$(shell ./ver.sh)
-SNAPPY_REMOTE?=10.0.1.14
+SNAPPY_REMOTE?=snappy # assumes snappy is set to your snappy host in /etc/hosts
 
 all:
 
@@ -38,3 +38,6 @@ snap: staging
 
 remote: snap
 	snappy-remote --url=ssh://$(SNAPPY_REMOTE) install ./ninjasphere_$(FRAMEWORK_VERSION)_multi.snap
+
+default-policy:
+	ssh -T ubuntu@${SNAPPY_REMOTE} cat /usr/share/apparmor/easyprof/templates/ubuntu-snappy/1.3/default
