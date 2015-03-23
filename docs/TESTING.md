@@ -98,6 +98,32 @@ TODO John
 
 * Once you have entered the serial and hit the Pair button the device should wake up and show a clock on the top.
 
+## Setting up your Sphere Site
+
+This section will be run from an Ubuntu machine on your network. It will require the following packages:
+```
+apt-get install -y jq curl
+```
+
+Next, we will set a shell variable containing the IP address of your Sphere on the network (the same as used to SSH above):
+```
+sphere_ip=x.x.x.x
+```
+
+For convenience, use the following to grab the site ID of your sphere, this should print a UUID:
+```
+site_id=$(curl -s http://$sphere_ip:8000/rest/v1/sites | jq -r '.data[0].id'); echo $site_id
+```
+
+Now update your site to have a latitude/longitude of your chosing, in this example we're using a place in Taipei, Taiwan. Note that it must be a valid lat/long that has an associated city:
+```
+curl -X PUT -H "Content-Type: application/json" -d '{"id":"'$site_id'","name":"Home","type":"home","longitude":121.6333,"latitude":25.0333}' http://$sphere_ip:8000/rest/v1/sites/$site_id
+```
+
+## Setting up a LIFX
+
+...
+
 # COMPLETION
 
 At the end of this process you should have a ninja sphere running snappy that is connected and paired to the ninja blocks cloud service over wireless. The device should respond to gestures, this will wake up the display and show the clock.
