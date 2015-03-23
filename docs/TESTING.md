@@ -89,7 +89,33 @@ ssh ubuntu@x.x.x.x
 
 The software which drives the zigbee chip is provided by Texas Instruments, we are going to run through using this to connect and control a Zigbee power socket.
 
-TODO John
+Login to the Ninja Sphere via with SSH as the ubuntu user
+
+	# stop the Ninja Sphere driver
+    sudo systemctl stop driver-go-zigbee_driver-go-zigbee_0.1.6-7.service
+
+    # start the TI user interface
+	(cd /apps/zigbee-zstack-gateway/current/servers/; LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH ./start_application)
+
+At this point you should see a screen like ![this](images/zigbee-started.png) <!--https://www.dropbox.com/s/ej506gcj9rowx1k/Screenshot%202015-03-23%2015.50.04.png?dl=0-->
+
+Now:
+
+* remove power from the zigbee socket
+* depress the reset button on the right hand side of the zigbee socket with a pen or similar object
+* while holding down the reset button, apply power to the zigbee socket
+* wait until both LEDs on the zigbee socket turn green and start flashing
+* release the reset button
+* remove power from the zigbee socket
+* wait for the LEDs to fade
+* apply power to the zigbee socket.
+* the socket is now in pairing mode.
+
+Back in the TI interface, hit 'P' (PERMIT_JOIN) to put the Ninja Sphere into pairing mode. If successful, you should see a device appear as in ![this image](images/zigbee-paired.png)<!--https://www.dropbox.com/s/bqk6dnmdbc9y2ml/Screenshot%202015-03-23%2015.54.52.png?dl=0).-->
+
+Hit 'D' to move to the devices section. Use the arrow keys to select the device labelled 'MAINS POWER OUTLET' so that the '>' is next to that device.
+
+Hit 'N' to turn the device on. Hit 'O' to turn the device off. You should hear a click from the socket as it turns on and off.
 
 ## Pairing to Ninja Blocks Cloud
 
