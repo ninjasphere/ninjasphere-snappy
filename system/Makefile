@@ -58,3 +58,4 @@ _always:
 
 clean:
 	rm -rf *.snap *.xz *.img
+	rm -r ../framework/build_tmp/ ../framework/staging-snappy/ ../framework/ninjasphere_0.0.12_multi.snap || true

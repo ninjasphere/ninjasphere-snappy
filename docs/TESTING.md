@@ -4,7 +4,7 @@ The aim of this document is to provide a basic test plan which asserts the main 
 
 In summary the functions we will be testing are:
 
-* Restoring a factory image which contains Ubuntu snappy
+* Flashing a Ninja Sphere with Snappy Ubuntu Core with the Ninja framework
 * Connecting the sphere to a wireless network
 * Pair the sphere to Ninja Blocks cloud service
 * Pair a Zigbee Power Socket
