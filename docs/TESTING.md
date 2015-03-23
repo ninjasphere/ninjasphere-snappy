@@ -6,8 +6,10 @@ In summary the functions we will be testing are:
 
 * Restoring a factory image which contains Ubuntu snappy
 * Connecting the sphere to a wireless network
-* Pairing a Zigbee Power Socket
-* Gestures
+* Pair the sphere to Ninja Blocks cloud service
+* Pair a Zigbee Power Socket
+* Check that gestures are working
+* Check the LED matrix is working
 
 # setup
 
@@ -20,21 +22,15 @@ Ninja blocks provides a firmware archive which needs to be downloaded and instal
 Once the sphere is imaged it is ready to be configured. 
 
 1. Plug in the mini USB cable to the sphere and connect this to a laptop. To access the device you can either use screen or putty.
-
 ```
 screen /dev/tty.usbmodem1411 115200
 ```
-
 2. Login to the device using the standard snappy user name and password of Ubuntu.
-
 3. Use sudo to login as root.
-
 ```
 sudo -i
 ```
-
 4. Use `wpa_cli` to configure the wireless interface.
-
 ```
 root@localhost:~# wpa_cli
 wpa_cli v2.1
@@ -60,24 +56,17 @@ OK
 > save
 OK
 ```
-
 5. Note down the the serial number, this will need to be entered to pair and the device, one thing to note this is case sensitive.
-
 ```
 echo $(sphere-serial)
 ```
-
-5. Reboot the device.
-
+6. Reboot the device.
 ```
 reboot
 ```
-
-6. Once your able to connect with screen/putty again the device is ready to pair. Sign up for an account at [Sphere Identity site](https://id.sphere.ninja/) then navigate to [API Site](https://api.sphere.ninja) which should once loaded look like the image below.
-
+7. Once your able to connect with screen/putty again the device is ready to pair. Sign up for an account at [Sphere Identity site](https://id.sphere.ninja/) then navigate to [API Site](https://api.sphere.ninja) which should once loaded look like the image below.
 ![Pairing Site Screen Shot](images/pairing_site.png)
-
-7. Once you have entered the serial and hit the Pair button the device should wake up and show a clock on the top.
+8. Once you have entered the serial and hit the Pair button the device should wake up and show a clock on the top.
 
 # completion
 
