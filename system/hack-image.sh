@@ -23,4 +23,17 @@ bootcmd:
   - modprobe g_serial; ln -sf /lib/systemd/system/getty@.service /etc/systemd/system/getty.target.wants/getty@ttyGS0.service || true
 EOF
 
+touch system-a/etc/cloud/no-blocknet
+
+cat >>system-a/etc/init/please-oh-please-wont-you-just-boot-faster.conf <<EOF
+start on starting cloud-init-nonet
+task
+
+console output
+
+script
+	touch /run/network/static-network-up-emitted
+end script
+EOF
+
 cat writable/system-data/var/lib/cloud/seed/nocloud-net/user-data
