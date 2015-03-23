@@ -162,6 +162,8 @@ Now, back to your Ubuntu desktop. Since the LIFX driver is running, it should de
 lifx_id=$(curl -s http://$sphere_ip:8000/rest/v1/things | jq -r '.data[] | select(.type == "light") | .id'); echo $lifx_id
 ```
 
+If the output of this command is blank, then open the LiFX app on the phone and toggle the light on and off to confirm connectivity with the LiFX bulb and then retry the step above.
+
 Providing this worked, you turn this LIFX bulb on/off:
 ```
 on_off_channel=$(curl -s http://$sphere_ip:8000/rest/v1/things/$lifx_id | jq -r '.data.device.channels[] | select(.protocol == "on-off") | .topic'); echo $on_off_channel
