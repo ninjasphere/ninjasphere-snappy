@@ -1,4 +1,4 @@
-# testing
+# TESTING
 
 The aim of this document is to provide a basic test plan which asserts the main hardware functions of the device work under Ubuntu snappy.
 
@@ -11,17 +11,19 @@ In summary the functions we will be testing are:
 * Check that gestures are working
 * Check the LED matrix is working
 
-# setup
+# SETUP
 
 Ninja blocks provides a firmware archive which needs to be downloaded and installed on a factory sphere.
 
 See flashing document.
 
-# test plan
+# TEST PLAN
 
-Once the sphere is imaged it is ready to be configured. 
+## Connecting to a Network
 
-* Plug in the mini USB cable to the sphere and connect this to a laptop. To access the device you can either use screen or putty.
+Once the sphere is imaged it is ready to be configured.
+
+* Plug in the mini USB cable to the sphere and connect this to a laptop. To access the device you can either use screen or putty. One thing to note is the screen command below is using the device as detected on my OSX laptop, this will be different on Linux platforms.
 
 ```
 screen /dev/tty.usbmodem1411 115200
@@ -75,16 +77,32 @@ echo $(sphere-serial)
 reboot
 ```
 
+## Logging in using SSH
+
+* Just to verify network is working you can ssh into the device, where `x.x.x.x` is the IP address assigned to your ninja sphere or `webdm.local`.
+
+```
+ssh ubuntu@x.x.x.x
+```
+
+## Testing the Zigbee Stack
+
+The software which drives the zigbee chip is provided by Texas Instruments, we are going to run through using this to connect and control a Zigbee power socket.
+
+TODO John
+
+## Pairing to Ninja Blocks Cloud
+
 * Once your able to connect with screen/putty again the device is ready to pair. Sign up for an account at [Sphere Identity site](https://id.sphere.ninja/) then navigate to [API Site](https://api.sphere.ninja) which should once loaded look like the image below.
 ![Pairing Site Screen Shot](images/pairing_site.png)
 
 * Once you have entered the serial and hit the Pair button the device should wake up and show a clock on the top.
 
-# completion
+# COMPLETION
 
 At the end of this process you should have a ninja sphere running snappy that is connected and paired to the ninja blocks cloud service over wireless. The device should respond to gestures, this will wake up the display and show the clock.
 
-# known issues
+# KNOWN ISSUES
 
 While porting the ninja sphere to snappy we encountered some issues, work arounds have been created for most but there are still some rather pointy ones.
 
