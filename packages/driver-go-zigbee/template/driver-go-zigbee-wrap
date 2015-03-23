@@ -4,4 +4,8 @@ version=$(basename "$app")
 name=$(basename "$(dirname "$app")")
 export SNAPP_APP=${SNAPP_APP:-$app}
 export SNAPP_APP_DATA_PATH=${SNAPP_APP_DATA_PATH:-/var/lib/apps/${name}/${version}}
-exec ./ninja-shim ./driver-go-zigbee "$@"
+export DEBUG=t
+zigbee_app=$(readlink -f "/apps/zigbee-zstack-gateway/current")
+zigbee_version=$(basename "$zigbee_app")
+zigbee_name=$(basename "$(dirname "$zigbee_app")")
+exec ./ninja-shim ./driver-go-zigbee "$@" --zigbee.stable-file=/var/lib/apps/$zigbee_name/$zigbee_version/zigbee.stable
