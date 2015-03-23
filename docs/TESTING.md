@@ -15,7 +15,7 @@ In summary the functions we will be testing are:
 
 Ninja blocks provides a firmware archive which needs to be downloaded and installed on a factory sphere.
 
-See flashing document: https://github.com/ninjasphere/ninjasphere-snappy/blob/master/flashing/README.md
+See flashing document: https://github.com/ninjasphere/ninjasphere-snappy/tree/master/flashing
 
 # TEST PLAN
 
