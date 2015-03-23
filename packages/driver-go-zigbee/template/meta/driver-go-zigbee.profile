@@ -174,6 +174,9 @@
   /apps/ninjasphere/*/config/** rk,
   /apps/ninjasphere/*/bin/** ixr,
 
+  @{CLICK_DIR}/zigbee-zstack-gateway/           r,
+  @{CLICK_DIR}/zigbee-zstack-gateway/**         rk,
+
   capability net_admin,
 
   ###WRITES###
