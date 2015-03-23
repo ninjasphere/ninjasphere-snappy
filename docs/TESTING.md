@@ -13,9 +13,9 @@ In summary the functions we will be testing are:
 
 # setup
 
-Ninja blocks provides a firmware archive which needs to be downloaded and installed on a factory sphere. A 4 gigabyte USB stick will be required to restore this to the sphere. Also for setup of the sphere you will need a mini USB cable, this will be used to access the console of the device and configure it's wireless connection.
+Ninja blocks provides a firmware archive which needs to be downloaded and installed on a factory sphere.
 
-* process here..
+See flashing document.
 
 # test plan
 
@@ -27,7 +27,7 @@ Once the sphere is imaged it is ready to be configured.
 screen /dev/tty.usbmodem1411 115200
 ```
 
-* Login to the device using the standard snappy user name and password of Ubuntu.
+* Login to the device using the standard snappy user name and password of ubuntu in lower case.
 
 * Use sudo to login as root.
 
