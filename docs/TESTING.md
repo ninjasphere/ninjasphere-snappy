@@ -115,7 +115,7 @@ Back in the TI interface, hit 'P' (PERMIT_JOIN) to put the Ninja Sphere into pai
 
 Hit 'D' to move to the devices section. Use the arrow keys to select the device labelled 'MAINS POWER OUTLET' so that the '>' is next to that device.
 
-Hit 'N' to turn the device on. Hit 'O' to turn the device off. You should hear a click from the socket as it turns on and off.
+Hit 'N' to turn the device on. Hit 'F' to turn the device off. You should hear a click from the socket as it turns on and off.
 
 ## Pairing to Ninja Blocks Cloud
 
