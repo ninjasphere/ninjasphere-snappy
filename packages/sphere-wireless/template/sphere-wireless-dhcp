@@ -1,4 +1,17 @@
 #!/bin/bash
 
 /sbin/ifconfig wlan0 up
-/sbin/dhclient -1 -v -pf /run/dhclient.wlan0.pid -lf /var/lib/dhcp/dhclient.wlan0.leases wlan0
+
+PID_FILE=/run/dhclient.wlan0.pid
+LEASE_FILE=/run/dhclient.wlan0.pid
+
+while true
+do
+	ps -p $(cat $PID_FILE) &> /dev/null
+
+	if [ $? -ne 0 ]; then
+		/sbin/dhclient -1 -v -pf ${PID_FILE} -lf ${LEASE_FILE} wlan0
+	fi
+
+	sleep 5
+done

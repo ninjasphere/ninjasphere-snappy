@@ -191,6 +191,7 @@
 
   # sphere wireless dhcp commands
   /sbin/dhclient uxr,
+  /bin/ps uxr,
   /sbin/ifconfig ixr,
   /sbin/dhclient-script ixr,
   /bin/run-parts ixr,
