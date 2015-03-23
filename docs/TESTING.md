@@ -164,7 +164,7 @@ lifx_id=$(curl -s http://$sphere_ip:8000/rest/v1/things | jq -r '.data[] | selec
 
 Providing this worked, you turn this LIFX bulb on/off:
 ```
-on_off_channel=$(curl -s http://$sphere_ip:8000/rest/v1/things/aeae4bce-d11d-11e4-9584-ea6425202e0f | jq -r '.data.device.channels[] | select(.protocol == "on-off") | .topic'); echo $on_off_channel
+on_off_channel=$(curl -s http://$sphere_ip:8000/rest/v1/things/$lifx_id | jq -r '.data.device.channels[] | select(.protocol == "on-off") | .topic'); echo $on_off_channel
 
 # turn it on
 mosquitto_pub -h $sphere_ip -t $on_off_channel -m '{"jsonrpc": "2.0", "method": "turnOn", "params": [], "id": "123"}'
