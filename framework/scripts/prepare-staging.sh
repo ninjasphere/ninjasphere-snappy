@@ -99,6 +99,14 @@ siphon-package libjemalloc1_3.5.1-2_amd64.deb x86_64-linux-gnu
 siphon-magic-bin redis-server
 siphon-magic-bin redis-cli
 
+dl-ext http://ports.ubuntu.com/ubuntu-ports/pool/universe/j/jq/jq_1.3-1.1ubuntu1_armhf.deb
+siphon-package jq_1.3-1.1ubuntu1_armhf.deb
+
+dl-ext http://ports.ubuntu.com/ubuntu-ports/pool/main/c/curl/curl_7.35.0-1ubuntu2.3_armhf.deb
+siphon-package curl_7.35.0-1ubuntu2.3_armhf.deb
+dl-ext http://ports.ubuntu.com/ubuntu-ports/pool/main/c/curl/libcurl3_7.35.0-1ubuntu2.3_armhf.deb
+siphon-package libcurl3_7.35.0-1ubuntu2.3_armhf.deb
+
 # sphere-client
 stage-add sources/sphere-client/ninjapack/root/opt/ninjablocks/sphere-client sphere-client
 stage-magic-bin sphere-client sphere-client/
