@@ -128,7 +128,7 @@ Hit 'N' to turn the device on. Hit 'O' to turn the device off. You should hear a
 
 This section will be run from an Ubuntu machine on your network. It will require the following packages:
 ```
-apt-get install -y jq curl
+apt-get install -y jq curl mosquitto-clients
 ```
 
 Next, we will set a shell variable containing the IP address of your Sphere on the network (the same as used to SSH above):
@@ -148,7 +148,31 @@ curl -X PUT -H "Content-Type: application/json" -d '{"id":"'$site_id'","name":"H
 
 ## Setting up a LIFX
 
-...
+To begin, download the LIFX app and pair it to your WiFi network (the same network the Sphere is connected to), and make sure you can control it successfully from the LIFX app. If it is not controllable from the LIFX app, it will not work with the Sphere.
+
+The packages from the above Sphere Site setup are also assumed to be installed.
+
+Because the Snappy Ubuntu Core system does not currently allow frameworks to specify any sort of dependency ordering in systemd, the LIFX driver needs to be restarted to ensure that HomeCloud is running before it starts. Run the following on the *sphere*:
+```
+sudo systemctl restart sphere-driver-lifx_sphere-driver-lifx_1.1.0.service
+```
+
+Now, back to your Ubuntu desktop. Since the LIFX driver is running, it should detect the LIFX bulb automatically. To get a list of the IDs of the LIFX bulbs paired (should output a UUID):
+```
+lifx_id=$(curl -s http://$sphere_ip:8000/rest/v1/things | jq -r '.data[] | select(.type == "light") | .id'); echo $lifx_id
+```
+
+Providing this worked, you turn this LIFX bulb on/off:
+```
+on_off_channel=$(curl -s http://$sphere_ip:8000/rest/v1/things/aeae4bce-d11d-11e4-9584-ea6425202e0f | jq -r '.data.device.channels[] | select(.protocol == "on-off") | .topic'); echo $on_off_channel
+
+# turn it on
+mosquitto_pub -h $sphere_ip -t $on_off_channel -m '{"jsonrpc": "2.0", "method": "turnOn", "params": [], "id": "123"}'
+
+# turn it off
+mosquitto_pub -h $sphere_ip -t $on_off_channel -m '{"jsonrpc": "2.0", "method": "turnOff", "params": [], "id": "123"}'
+```
+
 
 # COMPLETION
 
@@ -163,3 +187,5 @@ While porting the ninja sphere to snappy we encountered some issues, work around
 * App Armor profiles are problematic while upgrading snaps, we have observed cases were changes to the profiles aren't propegated and we need to force a reload using the aa-* commands. This shouldn't affect testing, unless updates are pulled down.
 
 * Bluetooth, although this is a feature of our ninja sphere we are unable to demonstrate it at this stage due to the complexity in packaging bluez in a snap package. We are hoping to work with Ubuntu to come up with a nice solution for this.
+
+* Frameworks cannot specify systemd dependency order, so drivers start before HomeCloud is running. They must be restarted later, before use. Once apps can have dependencies on systemd services from a required framework, we can fix this issue.
