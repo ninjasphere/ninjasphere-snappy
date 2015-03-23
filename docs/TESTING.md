@@ -29,6 +29,8 @@ Once the sphere is imaged it is ready to be configured.
 screen /dev/tty.usbmodem1411 115200
 ```
 
+Note: due to a known issue with the cloud-init component of the Ubuntu Core base image (noted below), the initial login prompt takes between 5-6 minutes on all boots until such time as the WiFi network has been successfully configured.
+
 * Login to the device using the standard snappy user name and password of ubuntu in lower case.
 
 * Use sudo to login as root.
