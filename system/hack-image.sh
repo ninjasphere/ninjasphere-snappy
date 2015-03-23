@@ -36,4 +36,7 @@ script
 end script
 EOF
 
+# lets NOT use the same MAC everywhere
+rm -rf system-a/lib/firmware/ti-connectivity/wl1271-nvs.bin
+
 cat writable/system-data/var/lib/cloud/seed/nocloud-net/user-data
