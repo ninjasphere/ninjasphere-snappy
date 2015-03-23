@@ -177,9 +177,9 @@
   /proc r,
   /proc/** r,
   /sys/module/libcomposite/initstat r,
+  /sys/module/g_serial/initstate rw,
   /run/systemd/private rw,
   /run/dbus/system_bus_socket rw,
-
   ptrace(read) peer=unconfined,
   capability sys_module,
   capability sys_resource,
