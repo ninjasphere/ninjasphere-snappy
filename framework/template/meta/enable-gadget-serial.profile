@@ -8,8 +8,6 @@
   #include <abstractions/base>
   #include <abstractions/consoles>
   #include <abstractions/openssl>
-  #include <abstractions/ssl_certs>
-  #include <abstractions/nameservice>
 
   # for python apps/services
   #include <abstractions/python>
@@ -166,18 +164,24 @@
   ###POLICYGROUPS###
 
   ###READS###
-  @{PROC}/ rk,
-  @{PROC}/** rk,
-  @{PROC}/[0-9]*/stat rk,
-
-  /apps/ninjasphere/*/sphere-schemas/** rk,
-  /apps/ninjasphere/*/config/** rk,
-  /apps/ninjasphere/*/bin/** ixr,
-
-  @{CLICK_DIR}/zigbee-zstack-gateway/           r,
-  @{CLICK_DIR}/zigbee-zstack-gateway/**         rk,
-
-  capability net_admin,
 
   ###WRITES###
+  @{CLICK_DIR}/@{APP_PKGNAME}/@{APP_VERSION}/bin/enable-gadget-serial ux,
+  #include <abstractions/nameservice>
+  /etc/passwd r,
+  /bin/kmod ixr,
+  /bin/systemctl ixr,
+  /etc/systemd/system/getty.target.wants/getty@ttyGS0.service wl,
+  /etc/modprobe.d/ r,
+  /etc/modprobe.d/** r,
+  /proc r,
+  /proc/** r,
+  /sys/module/libcomposite/initstat r,
+  /sys/module/g_serial/initstate rw,
+  /run/systemd/private rw,
+  /run/dbus/system_bus_socket rw,
+  ptrace(read) peer=unconfined,
+  capability sys_module,
+  capability sys_resource,
+  capability net_admin,
 }

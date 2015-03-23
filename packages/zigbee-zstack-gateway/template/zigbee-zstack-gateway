@@ -11,4 +11,5 @@ export LD_LIBRARY_PATH=${SNAPP_APP}/servers
 
 cd ${SNAPP_APP}/servers &&
 mkdir -p ${SNAPP_APP_DATA_PATH} &&
+(! test -f ${ZIGBEE_STABLE} || rm ${ZIGBEE_STABLE} || true ) &&
 exec ./zigbeeHAgw bbb
