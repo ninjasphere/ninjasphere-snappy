@@ -168,11 +168,14 @@ Providing this worked, you turn this LIFX bulb on/off:
 ```
 on_off_channel=$(curl -s http://$sphere_ip:8000/rest/v1/things/$lifx_id | jq -r '.data.device.channels[] | select(.protocol == "on-off") | .topic'); echo $on_off_channel
 
-# turn it on
-mosquitto_pub -h $sphere_ip -t $on_off_channel -m '{"jsonrpc": "2.0", "method": "turnOn", "params": [], "id": "123"}'
-
-# turn it off
-mosquitto_pub -h $sphere_ip -t $on_off_channel -m '{"jsonrpc": "2.0", "method": "turnOff", "params": [], "id": "123"}'
+while true; do
+  #turn it on;
+  mosquitto_pub -h $sphere_ip -t $on_off_channel -m '{"jsonrpc": "2.0", "method": "turnOn", "params": [], "id": "123"}';
+  sleep 1;
+  #turn it off;
+  mosquitto_pub -h $sphere_ip -t $on_off_channel -m '{"jsonrpc": "2.0", "method": "turnOff", "params": [], "id": "123"}';
+  sleep 1;
+done
 ```
 
 
