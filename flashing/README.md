@@ -20,6 +20,7 @@ Installation
 ------------
 
  * Power off the Sphere
+ * Remove the mini-USB cable from the Sphere
  * Insert the USB flash drive into the USB port on the bottom of the Sphere
  * While holding down the factory reset button on the bottom of the Sphere, re-insert the power.
  * The spinner/worms animation will appear briefly then disappear for a few seconds. Continue holding down the button until worms re-appear.
