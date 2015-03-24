@@ -3,7 +3,7 @@
 /sbin/ifconfig wlan0 up
 
 PID_FILE=/run/dhclient.wlan0.pid
-LEASE_FILE=/run/dhclient.wlan0.pid
+LEASE_FILE=/run/dhclient.wlan0.leases
 
 while true
 do
