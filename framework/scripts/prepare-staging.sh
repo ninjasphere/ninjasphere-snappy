@@ -30,7 +30,8 @@ dl-ext() {
         if [ ! -f src_cache/$FN ]; then
                 mkdir -p src_cache
                 pushd src_cache
-                wget $URL
+		echo "downloading $URL"
+                wget $URL || exit 1
                 popd
         fi
 
