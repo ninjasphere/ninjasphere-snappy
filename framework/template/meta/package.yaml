@@ -27,6 +27,9 @@ binaries:
  - name: ./bin/sphere-serial
  - name: ./bin/sphere-config
  - name: ./bin/sphere-installation
+ - name: ./bin/iw
+ - name: ./bin/iwlist
+ - name: ./bin/iwconfig
 ports:
   required: 8000,1883,6379
 integration:
@@ -44,3 +47,9 @@ integration:
     apparmor-profile: meta/sphere-serial.profile
   enable-gadget-serial:
     apparmor-profile: meta/enable-gadget-serial.profile
+  iw:
+    apparmor-profile: meta/iw.profile
+  iwlist:
+    apparmor-profile: meta/iwlist.profile
+  iwconfig:
+    apparmor-profile: meta/iwconfig.profile
