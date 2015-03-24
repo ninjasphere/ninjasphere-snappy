@@ -49,12 +49,12 @@ siphon-package() {
 	mkdir -p $DEB
 	pushd $DEB
 	if [ ! -f .extracted ]; then
-		ar x ../../src_cache/$DEB
+		ar x ../../src_cache/$DEB || exit 1
 		if [ -f data.tar.gz ]; then
-			tar -zxvf data.tar.gz -C $DST
+			tar -zxvf data.tar.gz -C $DST || exit 1
 		fi
 		if [ -f data.tar.xz ]; then
-			cat data.tar.xz | unxz | tar -xvf - -C $DST
+			cat data.tar.xz | unxz | tar -xvf - -C $DST || exit 1
 		fi
 		touch .extracted
 	fi
