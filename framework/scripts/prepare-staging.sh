@@ -35,9 +35,6 @@ dl-ext() {
                 popd
         fi
 
-	pushd build_tmp
-	tar -zxvf ../src_cache/$FN
-	popd
 }
 
 siphon-package() {
