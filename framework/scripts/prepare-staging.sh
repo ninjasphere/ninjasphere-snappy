@@ -107,6 +107,21 @@ siphon-package curl_7.35.0-1ubuntu2.3_armhf.deb
 dl-ext http://ports.ubuntu.com/ubuntu-ports/pool/main/l/libcurl/libcurl3_7.35.0-1ubuntu2.3_armhf.deb
 siphon-package libcurl3_7.35.0-1ubuntu2.3_armhf.deb
 
+dl-ext http://ports.ubuntu.com/ubuntu-ports/pool/main/i/iw/iw_3.4-1_armhf.deb
+siphon-package iw_3.4-1_armhf.deb
+
+dl-ext http://ports.ubuntu.com/ubuntu-ports/pool/main/libn/libnl3/libnl-3-200_3.2.21-1_armhf.deb
+siphon-package libnl-3-200_3.2.21-1_armhf.deb
+
+dl-ext http://ports.ubuntu.com/ubuntu-ports/pool/main/libn/libnl3/libnl-genl-3-200_3.2.21-1_armhf.deb
+siphon-package libnl-genl-3-200_3.2.21-1_armhf.deb
+
+dl-ext http://ports.ubuntu.com/ubuntu-ports/pool/main/w/wireless-tools/wireless-tools_30~pre9-8ubuntu1_armhf.deb
+siphon-package wireless-tools_30~pre9-8ubuntu1_armhf.deb
+
+dl-ext http://ports.ubuntu.com/ubuntu-ports/pool/main/w/wireless-tools/libiw30_30~pre9-8ubuntu1_armhf.deb
+siphon-package libiw30_30~pre9-8ubuntu1_armhf.deb
+
 # sphere-client
 stage-add sources/sphere-client/ninjapack/root/opt/ninjablocks/sphere-client sphere-client
 stage-magic-bin sphere-client sphere-client/
