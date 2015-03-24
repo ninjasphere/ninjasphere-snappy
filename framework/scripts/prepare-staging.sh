@@ -103,7 +103,8 @@ siphon-package jq_1.3-1.1ubuntu1_armhf.deb
 
 dl-ext http://ports.ubuntu.com/ubuntu-ports/pool/main/c/curl/curl_7.35.0-1ubuntu2.3_armhf.deb
 siphon-package curl_7.35.0-1ubuntu2.3_armhf.deb
-dl-ext http://ports.ubuntu.com/ubuntu-ports/pool/main/c/curl/libcurl3_7.35.0-1ubuntu2.3_armhf.deb
+
+dl-ext http://ports.ubuntu.com/ubuntu-ports/pool/main/l/libcurl/libcurl3_7.35.0-1ubuntu2.3_armhf.deb
 siphon-package libcurl3_7.35.0-1ubuntu2.3_armhf.deb
 
 # sphere-client
