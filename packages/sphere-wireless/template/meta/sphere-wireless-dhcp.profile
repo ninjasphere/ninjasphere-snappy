@@ -191,7 +191,7 @@
 
   # sphere wireless dhcp commands
   /sbin/dhclient uxr,
-  /bin/ps uxr,
+  /bin/ps ixr,
   /sbin/ifconfig ixr,
   /sbin/dhclient-script ixr,
   /bin/run-parts ixr,
@@ -212,4 +212,5 @@
   /etc/dhcp/dhclient-enter-hooks.d/* rk,
 
   /etc/resolv.conf rw,
+  ptrace (trace),
 }
