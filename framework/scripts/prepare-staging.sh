@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -o pipefail
 rm -rf staging-snappy
 cp -R template staging-snappy
 
