@@ -127,6 +127,31 @@ stage-magic-bin mqtt-bridgeify bin/
 stage-add sources/sphere-config/config config
 stage-add sources/sphere-schemas sphere-schemas
 
+#
+# replace all links with copies of the linked file
+#
+# intent: we would like to use links at runtime, but snappy
+# doesn't allow the target of a binary (in package.yaml) to be 
+# a symbolic link
+#
+# so, rather than storing n copies of the source in template/bin
+# we store one copy and represent the link intent with a symbolic
+# link. at packaging time, we resolve the links into copies of the file
+#
+# this preserves the original intent, without the development cost
+# of multiple copies. at some point we should discover why snappy
+# doesn't allow binaries to target symbolic links and then
+# document that discovery here. alternatively, if snappy is changed
+# to support symbolic links we can remove this workaround here.
+#
+find staging-snappy/bin -type l | while read l
+do
+    file=$(readlink -f "$l")
+    rm "$l"
+    cp "$file" "$l"
+done
+
+
 #ADD src/system-services /etc/service
 #ADD src/ninja-services /home/ninja/service
 #RUN chown -R ninja.ninja /home/ninja/service
