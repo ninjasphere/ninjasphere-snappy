@@ -1,7 +1,6 @@
 #!/bin/bash
 
 BIN=$(basename $0)
-shift 1
 export SIPHONED_PATH=${SNAPP_APP_PATH}/siphoned/sbin:${SNAPP_APP_PATH}/siphoned/bin:${SNAPP_APP_PATH}/siphoned/usr/bin
 export LD_LIBRARY_PATH=${SNAPP_APP_PATH}/siphoned/lib/arm-linux-gnueabihf:${LD_LIBRARY_PATH}
 
