@@ -43,3 +43,27 @@ sudo chmod +x /etc/profile.d/golang.sh
 cd /usr/local/go/src
 sudo GOOS=linux GOARCH=arm ./make.bash --no-clean
 ```
+
+# tools
+
+If you need to rebuild the snappy tools.
+
+Start by adding this to your `.bashrc`.
+
+```
+export GOPATH=$HOME/Code/go
+export PATH=$GOPATH/bin:$PATH
+```
+
+Create the paths required in your gopath and clone the code.
+
+```
+mkdir -p $GOPATH/src/launchpad.net
+cd $GOPATH/src/launchpad.net
+bzr clone lp:goget-ubuntu-touch
+cd goget-ubuntu-touch/ubuntu-device-flash
+go get -v
+go install
+```
+
+Note: This opens a big can of worms as you try and get the multitude of tools to align correctly.
