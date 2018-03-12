@@ -11,7 +11,7 @@ CC_FOR_TARGET=arm-linux-gnueabi-gcc CGO_ENABLED=1 GOOS=linux GOARCH=arm ./make.b
 
 ## Resources
 
-* [Snappy for Devices porting guide](https://developer.ubuntu.com/en/snappy/porting/)
+* [Snappy for Devices porting guide](https://web.archive.org/web/20160503235502/http://developer.ubuntu.com:80/en/snappy/guides/porting/)
 
 ## Compiling in a Docker VM
 
